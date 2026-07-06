@@ -541,6 +541,7 @@ arriveranno gli scatti: webp, `width`/`height` espliciti, `loading="lazy"`,
 ├── css/style.css
 ├── js/main.js          (hook .js, menu, fade-up, spia orari, mappa, form)
 ├── fonts/*.woff2       (5 file)
+├── favicon.svg         (B su Petrolio, niente Brace)
 ├── sitemap.xml
 ├── robots.txt
 ├── DESIGN.md
