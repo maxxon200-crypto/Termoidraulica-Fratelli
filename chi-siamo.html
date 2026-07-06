@@ -7,8 +7,8 @@
   <meta name="description" content="La famiglia Bollente: Giovanni, arrivato a Milano da Napoli, e i figli Vitale e Francesco. Il negozio di Sesto San Giovanni aperto nel 1997.">
   <!-- VERIFICARE CON IL CLIENTE: dominio definitivo (vale per canonical e sitemap) -->
   <link rel="canonical" href="https://DOMINIO-DA-CONFERMARE.example/chi-siamo.html">
-  <!-- Niente cookie e niente analytics in v1: nessun banner necessario. -->
-  <link rel="preload" href="fonts/fraunces-400.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Niente cookie e niente analytics: nessun banner necessario. Font self-hosted. -->
+  <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
@@ -68,14 +68,17 @@
         <span class="nome">Fratelli Bollente</span>
       </a>
       <button class="menu-bottone" aria-expanded="false" aria-controls="nav-principale">Menu</button>
-      <nav id="nav-principale" class="nav" aria-label="Principale">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="servizi.html">Servizi</a></li>
-          <li><a href="chi-siamo.html" aria-current="page">Chi siamo</a></li>
-          <li><a href="contatti.html">Contatti</a></li>
-        </ul>
-      </nav>
+      <div class="testata-nav">
+        <nav id="nav-principale" class="nav" aria-label="Principale">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="servizi.html">Servizi</a></li>
+            <li><a href="chi-siamo.html" aria-current="page">Chi siamo</a></li>
+            <li><a href="contatti.html">Contatti</a></li>
+          </ul>
+        </nav>
+        <a class="bottone bottone-primario" href="tel:+39022428426">Chiama</a>
+      </div>
     </div>
   </header>
 
@@ -83,47 +86,89 @@
 
     <section class="hero" aria-labelledby="titolo-pagina">
       <div class="contenitore">
-        <h1 id="titolo-pagina">La famiglia Bollente</h1>
-        <hr class="riga-bollente" aria-hidden="true">
-        <p class="sottotitolo prosa">Da Napoli a Milano, e dal 1997 il negozio a Sesto San Giovanni.</p>
+        <p class="eyebrow">La nostra storia</p>
+        <h1 id="titolo-pagina">La famiglia <span class="disegnata">Bollente<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" vector-effect="non-scaling-stroke" d="M4 8 C 42 3 74 3 104 6 S 168 9 196 5"/></svg></span></h1>
+        <p class="lead">Da Napoli a Milano, e dal 1997 il negozio a Sesto San Giovanni.</p>
       </div>
     </section>
 
-    <div class="contenitore">
-      <figure class="foto-segnaposto foto-larga">
-        <figcaption>FOTO: la facciata del negozio in via per Crescenzago con l'insegna, luce del mattino</figcaption>
-      </figure>
-    </div>
-
     <!-- VERIFICARE CON IL CLIENTE: tutto il racconto che segue va confermato
          parola per parola prima di andare online (date, nomi, dettagli) -->
-    <section aria-label="La nostra storia">
-      <div class="contenitore">
-        <div class="colonna-racconto">
-          <p>Il negozio l'ha aperto nostro padre, Giovanni, nel 1997. Ma il mestiere è più vecchio del negozio.</p>
-          <p>Giovanni è arrivato a Milano da Napoli che era ancora un ragazzo. Il lavoro l'ha imparato da suo zio, che faceva l'idraulico: prima a portare la borsa degli attrezzi, poi a usarli. Non c'è stata una scuola: c'è stato un cantiere dopo l'altro, finché il mestiere non è diventato suo.</p>
-          <p>Nel 1997 ha aperto la termoidraulica dove lavoriamo ancora oggi: un negozio con il banco, e accanto l'esposizione e il deposito, in via per Crescenzago 177 a Sesto San Giovanni. Non un ufficio con un magazzino da qualche parte: un posto dove la gente entra.</p>
-          <p>Il cognome, Bollente, per questo mestiere è quasi troppo giusto. Non l'abbiamo scelto, ma aiuta a farsi ricordare.</p>
-          <p>Oggi in negozio ci siamo noi, Vitale e Francesco, i figli. Il lavoro è quello: impianti, caldaie, bagni, il banco. È cambiato il materiale, sono cambiate le norme. Non è cambiato il modo di stare dietro al banco: prima si ascolta, poi si vende.</p>
-          <p>A qualcuno sembrerà strano tenere aperto un negozio vero, coi vetri e la saracinesca. Per noi non è nostalgia, è metodo. Un problema si spiega meglio davanti a un pezzo che al telefono. Un preventivo per il bagno viene meglio dopo che un rubinetto l'hai aperto e chiuso in esposizione. E quando in casa c'è un guasto, sapere dove siamo, e che ci siamo dal 1997, vale più di qualsiasi pagina web, compresa questa.</p>
+    <section class="senza-sopra" aria-label="La nostra storia">
+      <div class="contenitore striscia">
+        <div class="racconto">
+          <p>Il negozio l'ha aperto nostro padre, Giovanni, nel <span class="disegnata">1997<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" vector-effect="non-scaling-stroke" d="M4 8 C 42 3 74 3 104 6 S 168 9 196 5"/></svg></span>. Ma il mestiere è più vecchio: l'ha imparato da ragazzo, arrivato a Milano da Napoli, andando in cantiere con lo zio idraulico. Nessuna scuola: un lavoro dopo l'altro, finché è diventato suo.</p>
+          <p>Da allora siamo sempre nello stesso posto: un negozio con il banco, l'esposizione e il deposito, in via per Crescenzago 177. Non un ufficio con un magazzino da qualche parte, ma <span class="evidenzia">un posto dove la gente entra</span>. Il cognome, Bollente, per questo mestiere è quasi troppo giusto: non l'abbiamo scelto, ma aiuta a farsi ricordare.</p>
         </div>
+        <div class="striscia-media">
+          <figure class="frame frame--arco" role="img" aria-label="Foto in arrivo: la facciata del negozio in via per Crescenzago con l'insegna, luce del mattino">
+            <span class="frame-chip">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+              La facciata
+            </span>
+            <span class="frame-nota">La facciata del negozio con l'insegna, luce del mattino.</span>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="sezione sfondo-2" aria-label="Il metodo">
+      <div class="contenitore striscia striscia-inversa">
+        <blockquote class="pull-quote">
+          <p>«E quando in casa c'è un guasto, sapere dove siamo, e che ci siamo dal 1997, vale più di qualsiasi pagina web, compresa questa.»</p>
+          <cite>Vitale e Francesco</cite>
+        </blockquote>
+        <div class="striscia-media">
+          <figure class="frame frame--arco" role="img" aria-label="Foto in arrivo: Vitale e Francesco in negozio, luce naturale">
+            <span class="frame-chip">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+              In negozio
+            </span>
+            <span class="frame-nota">Vitale e Francesco in negozio, luce naturale.</span>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="sezione" aria-label="Oggi">
+      <div class="contenitore">
+        <div class="racconto">
+          <p>Oggi al banco ci siamo noi, Vitale e Francesco. Sono cambiati i materiali e le norme, non il modo di lavorare: <span class="evidenzia terra">prima si ascolta, poi si vende</span>. Un problema si spiega meglio davanti a un pezzo che al telefono.</p>
+        </div>
+        <!-- VERIFICARE CON IL CLIENTE: "29 anni" invecchia ogni anno; "1997 → oggi"
+             lo dice per sempre. -->
+        <div class="fatti">
+          <div class="stat">
+            <span class="numero">29</span>
+            <span class="etichetta">anni al banco</span>
+          </div>
+          <div class="timeline-1997">
+            <span>1997</span>
+            <span class="freccia" aria-hidden="true"></span>
+            <span>oggi</span>
+          </div>
+        </div>
+        <p style="margin-top:2rem"><a class="link-freccia" href="contatti.html">Vieni in negozio: orari e mappa</a></p>
       </div>
     </section>
     <!-- FINE SEZIONE DA VERIFICARE -->
 
-    <div class="contenitore griglia-due">
-      <figure class="foto-segnaposto foto-media" data-anima>
-        <figcaption>FOTO: il bancone con i cataloghi e il telefono fisso</figcaption>
-      </figure>
-      <figure class="foto-segnaposto foto-media" data-anima>
-        <figcaption>FOTO: Vitale e Francesco in negozio, luce naturale</figcaption>
-      </figure>
-    </div>
-
-    <section aria-label="In breve">
-      <div class="contenitore" data-anima>
-        <p class="prosa">Il negozio è aperto dal 1997. Oggi in azienda ci sono Vitale e Francesco, i figli di Giovanni.</p>
-        <p><a href="contatti.html">Vieni in negozio: orari e mappa</a></p>
+    <section class="cta-scura sezione" aria-labelledby="titolo-cta">
+      <div class="contenitore">
+        <div>
+          <p class="eyebrow">Il negozio</p>
+          <h2 class="display" id="titolo-cta">Passa in negozio o chiamaci</h2>
+          <p>Si entra, si spiega il problema, si trova il pezzo o si fissa l'intervento.</p>
+          <div class="cta-scura-azioni">
+            <a class="bottone bottone-primario" href="tel:+39022428426">Chiama il negozio</a>
+            <a class="link-freccia" href="contatti.html">Mappa e orari</a>
+          </div>
+        </div>
+        <div class="cta-dettagli">
+          <p><span class="valore">Via per Crescenzago 177</span><br>20099 Sesto San Giovanni (MI)</p>
+          <p><span class="valore">Lun–Ven</span> 7:00–12:00 e 14:00–18:00<br><span class="valore">Sabato</span> 7:00–12:00 · Domenica chiuso</p>
+          <p><a href="tel:+39022428426">02 2428426</a> · <a href="tel:+390289289611">02 89289611</a></p>
+        </div>
       </div>
     </section>
 
@@ -155,10 +200,10 @@
   </footer>
 
   <div class="barra-mobile">
-    <a class="bottone bottone-chiama" href="tel:+39022428426">Chiama</a>
+    <a class="bottone bottone-primario" href="tel:+39022428426">Chiama</a>
     <!-- VERIFICARE CON IL CLIENTE: numero WhatsApp reale, poi togliere
          l'attributo hidden e completare il link wa.me -->
-    <a class="bottone bottone-contorno" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
+    <a class="bottone bottone-ghost" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
   </div>
 
   <script src="js/main.js" defer></script>

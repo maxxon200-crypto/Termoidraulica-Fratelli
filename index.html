@@ -7,8 +7,8 @@
   <meta name="description" content="Negozio di termoidraulica in via per Crescenzago 177 a Sesto San Giovanni. Idraulica, caldaie, climatizzazione e arredobagno dal 1997. Tel 02 2428426.">
   <!-- VERIFICARE CON IL CLIENTE: dominio definitivo (vale per canonical e sitemap) -->
   <link rel="canonical" href="https://DOMINIO-DA-CONFERMARE.example/">
-  <!-- Niente cookie e niente analytics in v1: nessun banner necessario. -->
-  <link rel="preload" href="fonts/fraunces-400.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Niente cookie e niente analytics: nessun banner necessario. Font self-hosted. -->
+  <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
@@ -68,14 +68,17 @@
         <span class="nome">Fratelli Bollente</span>
       </a>
       <button class="menu-bottone" aria-expanded="false" aria-controls="nav-principale">Menu</button>
-      <nav id="nav-principale" class="nav" aria-label="Principale">
-        <ul>
-          <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="servizi.html">Servizi</a></li>
-          <li><a href="chi-siamo.html">Chi siamo</a></li>
-          <li><a href="contatti.html">Contatti</a></li>
-        </ul>
-      </nav>
+      <div class="testata-nav">
+        <nav id="nav-principale" class="nav" aria-label="Principale">
+          <ul>
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="servizi.html">Servizi</a></li>
+            <li><a href="chi-siamo.html">Chi siamo</a></li>
+            <li><a href="contatti.html">Contatti</a></li>
+          </ul>
+        </nav>
+        <a class="bottone bottone-primario" href="tel:+39022428426">Chiama</a>
+      </div>
     </div>
   </header>
 
@@ -83,25 +86,42 @@
 
     <section class="hero" aria-labelledby="titolo-hero">
       <div class="contenitore hero-griglia">
-        <div>
-          <h1 id="titolo-hero">Termoidraulica a Sesto San Giovanni, dal 1997.</h1>
-          <hr class="riga-bollente" aria-hidden="true">
-          <!-- VERIFICARE CON IL CLIENTE: la frase dice che il negozio è in
-               via per Crescenzago da 29 anni (e il numero invecchia ogni
-               anno). Testo indicato dal committente: confermare o adottare
-               l'alternativa in DESIGN.md §5 prima di pubblicare. -->
-          <p class="sottotitolo">Idraulica, caldaie e climatizzazione. Un negozio vero, una famiglia vera, in Via per Crescenzago da ventinove anni.</p>
+        <div class="hero-testo">
+          <p class="eyebrow">Idraulica · Caldaie · Climatizzazione</p>
+          <h1 id="titolo-hero">Termoidraulica a Sesto San Giovanni, <span class="disegnata">dal 1997<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" vector-effect="non-scaling-stroke" d="M4 8 C 42 3 74 3 104 6 S 168 9 196 5"/></svg></span>.</h1>
+          <!-- VERIFICARE CON IL CLIENTE: la frase dice che il negozio è in via
+               per Crescenzago da 29 anni (e il numero invecchia ogni anno).
+               Testo indicato dal committente: confermare o adottare
+               l'alternativa in DESIGN.md prima di pubblicare. -->
+          <p class="lead">Idraulica, caldaie e climatizzazione. Un negozio vero, una famiglia vera, in Via per Crescenzago da ventinove anni.</p>
           <div class="hero-azioni">
-            <a class="bottone bottone-chiama" href="tel:+39022428426">Chiama il negozio</a>
-            <a href="servizi.html">Tutti i servizi</a>
+            <a class="bottone bottone-primario" href="tel:+39022428426">Chiama il negozio</a>
+            <a class="link-freccia" href="servizi.html">Tutti i servizi</a>
           </div>
         </div>
+
         <div class="hero-media">
-          <figure class="foto-segnaposto foto-ritratto">
-            <figcaption class="didascalia-corsiva">FOTO: il bancone del negozio, Vitale o Francesco al lavoro, luce naturale, orizzontale stretta</figcaption>
+          <span class="cerchio-sfondo" aria-hidden="true"></span>
+          <div class="badge-1997" aria-hidden="true">
+            <svg viewBox="0 0 108 108">
+              <defs>
+                <path id="anello-hero" d="M54 54 m -39 0 a 39 39 0 1 1 78 0 a 39 39 0 1 1 -78 0"></path>
+              </defs>
+              <g class="anello">
+                <text><textPath href="#anello-hero" startOffset="0">TERMOIDRAULICA · DAL 1997 · BOLLENTE · </textPath></text>
+              </g>
+              <text class="marchio" x="54" y="63" text-anchor="middle">B</text>
+            </svg>
+          </div>
+          <figure class="frame frame--arco" role="img" aria-label="Foto in arrivo: il bancone del negozio, con Vitale o Francesco al lavoro, luce naturale">
+            <span class="frame-chip">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+              Il bancone
+            </span>
+            <span class="frame-nota">Il bancone, con Vitale o Francesco al lavoro. Luce naturale.</span>
           </figure>
           <div class="card-negozio">
-            <p class="overline">Il negozio</p>
+            <p class="eyebrow">Il negozio</p>
             <address>Via per Crescenzago 177<br>Sesto San Giovanni (MI)</address>
             <hr class="filetto" aria-hidden="true">
             <p>Lun–Ven 7:00–12:00 e 14:00–18:00<br>Sabato 7:00–12:00</p>
@@ -111,116 +131,114 @@
       </div>
     </section>
 
-    <div class="contenitore">
-      <figure class="foto-segnaposto foto-larga">
-        <figcaption>FOTO: la vetrina del negozio in via per Crescenzago, mattina presto, saracinesca appena alzata</figcaption>
-      </figure>
+    <div class="striscia-trust">
+      <div class="contenitore">
+        <!-- VERIFICARE CON IL CLIENTE: "29 anni" invecchia ogni anno; "dal 1997"
+             lo dice per sempre. Stringa indicata dal committente. -->
+        <ul>
+          <li>Dal 1997</li>
+          <li>29 anni al banco</li>
+          <li>Via per Crescenzago 177, Sesto San Giovanni</li>
+        </ul>
+      </div>
     </div>
 
-    <section aria-labelledby="titolo-servizi">
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-traccia">
+        <span>Idraulica</span>
+        <span>Caldaie</span>
+        <span>Climatizzazione</span>
+        <span>Ristrutturazione bagno</span>
+        <span>Vendita al banco</span>
+        <span>Impianti antincendio</span>
+      </div>
+    </div>
+
+    <section class="sezione" aria-labelledby="titolo-servizi">
       <div class="contenitore">
-        <p class="overline">Il lavoro di ogni giorno</p>
+        <p class="eyebrow">Il lavoro di ogni giorno</p>
         <h2 id="titolo-servizi">Idraulica, caldaie, climatizzazione</h2>
-        <p class="prosa">Il grosso del lavoro è questo. Il resto, dalla vendita al banco agli impianti antincendio, è nella <a href="servizi.html">pagina servizi</a>.</p>
-        <!-- VERIFICARE CON IL CLIENTE: le liste dei lavori nelle tre card
-             vanno confermate voce per voce (vedi NOTES.md, punto 6) -->
-        <div class="card-griglia">
-          <article class="card-servizio" data-anima>
-            <svg class="icona-card" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 3c3.5 4.3 6 7.5 6 10.6a6 6 0 0 1-12 0C6 10.5 8.5 7.3 12 3Z"/>
-            </svg>
-            <h3><a href="servizi.html#idraulica">Idraulica</a></h3>
-            <ul>
-              <li>Ricerca e riparazione di perdite</li>
-              <li>Sostituzione di scaldabagni</li>
-              <li>Sanitari e rubinetteria</li>
-              <li>Rifacimento dell'impianto idrico</li>
-              <li>Scarichi e sifoni</li>
-            </ul>
-          </article>
-          <article class="card-servizio" data-anima>
-            <svg class="icona-card" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 3c.5 3.4 2.9 4.7 4.4 6.8a6.6 6.6 0 0 1 1.1 3.7A5.5 5.5 0 0 1 12 19a5.5 5.5 0 0 1-5.5-5.5c0-2 .9-3.5 2.1-5C10 6.7 11.6 5.6 12 3Z"/>
-              <path d="M12 19c-1.7 0-2.7-1.2-2.7-2.6 0-1.5 1.5-2.6 2.7-4 1.2 1.4 2.7 2.5 2.7 4 0 1.4-1 2.6-2.7 2.6Z"/>
-            </svg>
-            <h3><a href="servizi.html#caldaie">Riscaldamento e caldaie</a></h3>
-            <ul>
-              <li>Manutenzione annuale e prova fumi</li>
-              <li>Sostituzione della caldaia</li>
-              <li>Rapporto di controllo di efficienza energetica</li>
-              <li>Radiatori e valvole termostatiche</li>
-              <li>Libretto di impianto</li>
-            </ul>
-          </article>
-          <article class="card-servizio" data-anima>
-            <svg class="icona-card" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 2v20M3.3 7l17.4 10M20.7 7 3.3 17"/>
-              <path d="m9.2 4.6 2.8 2.3 2.8-2.3M9.2 19.4l2.8-2.3 2.8 2.3"/>
-            </svg>
-            <h3><a href="servizi.html#clima">Climatizzazione</a></h3>
-            <ul>
-              <li>Installazione di climatizzatori</li>
-              <li>Manutenzione e pulizia dei filtri</li>
-              <li>Ricarica del gas refrigerante</li>
-              <li>Spostamento di unità esistenti</li>
-              <li>Sopralluogo e preventivo</li>
-            </ul>
-          </article>
+        <p class="lead">Il grosso del lavoro è questo. Il resto, dalla vendita al banco agli impianti antincendio, è nella <a href="servizi.html">pagina servizi</a>.</p>
+
+        <div class="servizi-griglia">
+          <a class="card-servizio" href="servizi.html#idraulica" data-anima>
+            <span class="card-num">01</span>
+            <h3>Idraulica</h3>
+            <p>Perdite, scarichi, scaldabagni, sanitari e rubinetteria.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+          <a class="card-servizio" href="servizi.html#caldaie" data-anima>
+            <span class="card-num">02</span>
+            <h3>Riscaldamento e caldaie</h3>
+            <p>Manutenzione e prova fumi, sostituzione, libretto di impianto.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+          <a class="card-servizio" href="servizi.html#clima" data-anima>
+            <span class="card-num">03</span>
+            <h3>Climatizzazione</h3>
+            <p>Installazione di split, manutenzione e ricariche.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+          <a class="card-servizio" href="servizi.html#bagno" data-anima>
+            <span class="card-num">04</span>
+            <h3>Ristrutturazione bagno</h3>
+            <p>Il preventivo parte dall'esposizione accanto al negozio.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+          <a class="card-servizio" href="servizi.html#banco" data-anima>
+            <span class="card-num">05</span>
+            <h3>Vendita al banco</h3>
+            <p>Ricambi e materiale termoidraulico, il pezzo si confronta.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+          <a class="card-servizio" href="servizi.html#antincendio" data-anima>
+            <span class="card-num">06</span>
+            <h3>Impianti antincendio</h3>
+            <p>Realizzazione e manutenzione, da valutare caso per caso.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- VERIFICARE CON IL CLIENTE: date e dettagli della storia di famiglia -->
-    <section aria-labelledby="titolo-famiglia">
-      <div class="contenitore striscia">
-        <figure class="foto-segnaposto foto-media" data-anima>
-          <figcaption>FOTO: Vitale e Francesco davanti al bancone del negozio, luce naturale</figcaption>
-        </figure>
-        <div data-anima>
-          <h2 id="titolo-famiglia">La famiglia Bollente</h2>
+    <section class="sezione sfondo-2" aria-labelledby="titolo-banco">
+      <div class="contenitore striscia striscia-inversa">
+        <div>
+          <p class="eyebrow">La famiglia Bollente</p>
+          <h2 id="titolo-banco">Un negozio dove si entra</h2>
           <p class="prosa">Giovanni ha aperto il negozio nel 1997. Il mestiere l'aveva imparato dallo zio idraulico, dopo essere arrivato ancora ragazzo da Napoli a Milano. Oggi in negozio ci sono i figli, Vitale e Francesco.</p>
-          <p><a href="chi-siamo.html">La nostra storia</a></p>
+          <p class="prosa">Un problema si spiega meglio davanti a un pezzo che al telefono. Per questo teniamo aperto un negozio vero, con il banco, l'esposizione e il deposito.</p>
+          <p><a class="link-freccia" href="chi-siamo.html">La nostra storia</a></p>
+        </div>
+        <div class="striscia-media">
+          <figure class="frame frame--rett" role="img" aria-label="Foto in arrivo: Vitale e Francesco davanti al bancone del negozio, luce naturale">
+            <span class="frame-chip">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+              Al banco
+            </span>
+            <span class="frame-nota">Vitale e Francesco davanti al bancone, luce naturale.</span>
+          </figure>
         </div>
       </div>
     </section>
     <!-- FINE SEZIONE DA VERIFICARE -->
 
-    <!-- Unica banda scura della pagina (FIX 1): non aggiungerne altre -->
-    <section class="banda-scura" aria-labelledby="titolo-esposizione">
-      <div class="contenitore striscia striscia-inversa">
-        <div data-anima>
-          <p class="overline">Arredobagno</p>
-          <h2 id="titolo-esposizione">Il bagno si sceglie dal vero</h2>
-          <p class="prosa">Se il bagno è da rifare, in esposizione si vede e si tocca quello che verrà montato. Esposizione e deposito sono accanto al negozio.</p>
-          <p><a href="servizi.html#bagno">Arredobagno e ristrutturazione bagno</a></p>
+    <section class="cta-scura sezione" aria-labelledby="titolo-cta">
+      <div class="contenitore">
+        <div>
+          <p class="eyebrow">Dove siamo</p>
+          <h2 class="display" id="titolo-cta">Passa in negozio o chiamaci</h2>
+          <p>Si entra, si spiega il problema, si trova il pezzo o si fissa l'intervento.</p>
+          <div class="cta-scura-azioni">
+            <a class="bottone bottone-primario" href="tel:+39022428426">Chiama il negozio</a>
+            <a class="link-freccia" href="contatti.html">Mappa e orari</a>
+          </div>
         </div>
-        <figure class="foto-segnaposto foto-media" data-anima>
-          <figcaption>FOTO: l'esposizione arredobagno accanto al negozio, sanitari e rubinetterie esposte</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section aria-labelledby="titolo-dove">
-      <div class="contenitore striscia">
-        <div class="mappa" data-mappa data-lat="45.519" data-lon="9.248">
-          <p><strong>Via per Crescenzago 177</strong><br>20099 Sesto San Giovanni (MI)</p>
-          <button class="bottone bottone-petrolio" data-mappa-apri>Apri la mappa</button>
-          <a href="https://www.openstreetmap.org/?mlat=45.519&amp;mlon=9.248#map=17/45.519/9.248" target="_blank" rel="noopener">Apri in OpenStreetMap</a>
-        </div>
-        <div data-anima>
-          <p class="overline">Dove siamo</p>
-          <h2 id="titolo-dove">Via per Crescenzago 177</h2>
-          <p class="prosa">Si entra, si spiega il problema, si trova il pezzo o si fissa l'intervento.</p>
-          <p>
-            <a href="tel:+39022428426">02 2428426</a> ·
-            <a href="tel:+390289289611">02 89289611</a>
-          </p>
-          <table class="tabella-orari">
-            <caption>Orari</caption>
-            <tr><th scope="row">Lun–Ven</th><td>7:00–12:00 e 14:00–18:00</td></tr>
-            <tr><th scope="row">Sabato</th><td>7:00–12:00</td></tr>
-            <tr><th scope="row">Domenica</th><td>chiuso</td></tr>
-          </table>
+        <div class="cta-dettagli">
+          <p><span class="valore">Via per Crescenzago 177</span><br>20099 Sesto San Giovanni (MI)</p>
+          <p><span class="valore">Lun–Ven</span> 7:00–12:00 e 14:00–18:00<br><span class="valore">Sabato</span> 7:00–12:00 · Domenica chiuso</p>
+          <p><a href="tel:+39022428426">02 2428426</a> · <a href="tel:+390289289611">02 89289611</a></p>
         </div>
       </div>
     </section>
@@ -253,10 +271,10 @@
   </footer>
 
   <div class="barra-mobile">
-    <a class="bottone bottone-chiama" href="tel:+39022428426">Chiama</a>
+    <a class="bottone bottone-primario" href="tel:+39022428426">Chiama</a>
     <!-- VERIFICARE CON IL CLIENTE: numero WhatsApp reale, poi togliere
          l'attributo hidden e completare il link wa.me -->
-    <a class="bottone bottone-contorno" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
+    <a class="bottone bottone-ghost" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
   </div>
 
   <script src="js/main.js" defer></script>

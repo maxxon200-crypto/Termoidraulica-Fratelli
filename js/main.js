@@ -1,11 +1,26 @@
 /* Termoidraulica Fratelli Bollente · JS unico.
-   Tutto qui dentro è miglioramento progressivo: senza JS il sito
-   resta completo (menu aperto, orari statici, link mappa esterno,
-   validazione nativa del form). Niente cookie, niente analytics. */
+   Tutto qui dentro è miglioramento progressivo: senza JS il sito resta
+   completo (menu aperto, testata piena, orari statici, marquee fermo e
+   leggibile, tratti già disegnati, link mappa esterno, validazione nativa
+   del form). Niente cookie, niente analytics, niente terze parti. */
 
-/* Il gancio: lo stato nascosto delle animazioni esiste solo con questa
-   classe. Deve essere la prima istruzione (vedi DESIGN.md §1.7). */
+/* Gancio: lo stato nascosto di reveal e tratti vive solo con questa classe.
+   Deve essere la prima istruzione (vedi DESIGN.md §1.6). */
 document.documentElement.classList.add("js");
+
+var riduciMoto = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+/* ---------- Testata sticky: fondo + blur quando si scrolla ---------- */
+
+(function () {
+  var testata = document.querySelector(".testata");
+  if (!testata) return;
+  function aggiorna() {
+    testata.classList.toggle("scrollata", window.scrollY > 8);
+  }
+  aggiorna();
+  window.addEventListener("scroll", aggiorna, { passive: true });
+})();
 
 /* ---------- Menu a scomparsa (mobile) ---------- */
 
@@ -25,44 +40,84 @@ document.documentElement.classList.add("js");
   });
 })();
 
-/* ---------- Fade-up all'ingresso nel viewport: un solo effetto,
-   una volta sola, mai con motion ridotto ---------- */
+/* ---------- Reveal + tratti disegnati: un IntersectionObserver condiviso,
+   una volta sola per elemento, mai con motion ridotto ---------- */
 
 (function () {
-  var elementi = document.querySelectorAll("[data-anima]");
-  if (!elementi.length) return;
-  var riduci = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (riduci.matches || !("IntersectionObserver" in window)) {
-    elementi.forEach(function (el) {
+  var anima = Array.prototype.slice.call(document.querySelectorAll("[data-anima]"));
+  var tratti = Array.prototype.slice.call(document.querySelectorAll(".disegnata, .evidenzia"));
+
+  if (riduciMoto.matches || !("IntersectionObserver" in window)) {
+    anima.forEach(function (el) {
       el.classList.add("vista");
+    });
+    tratti.forEach(function (el) {
+      el.classList.add("tracciata");
     });
     return;
   }
+
+  /* stagger: ogni elemento animato prende un ritardo in base alla sua
+     posizione tra i fratelli che animano nello stesso contenitore */
+  anima.forEach(function (el) {
+    var indice = 0;
+    var p = el.previousElementSibling;
+    while (p) {
+      if (p.hasAttribute("data-anima")) indice++;
+      p = p.previousElementSibling;
+    }
+    el.style.setProperty("--ritardo", Math.min(indice, 6) * 60 + "ms");
+  });
+
   var oss = new IntersectionObserver(
     function (voci) {
       voci.forEach(function (voce) {
-        if (voce.isIntersecting) {
-          voce.target.classList.add("vista");
-          oss.unobserve(voce.target);
+        if (!voce.isIntersecting) return;
+        if (voce.target.hasAttribute("data-anima")) voce.target.classList.add("vista");
+        if (
+          voce.target.classList.contains("disegnata") ||
+          voce.target.classList.contains("evidenzia")
+        ) {
+          voce.target.classList.add("tracciata");
         }
+        oss.unobserve(voce.target);
       });
     },
     { rootMargin: "0px 0px -10% 0px" }
   );
-  elementi.forEach(function (el) {
+  anima.forEach(function (el) {
+    oss.observe(el);
+  });
+  tratti.forEach(function (el) {
     oss.observe(el);
   });
 })();
 
+/* ---------- Marquee servizi: si duplica la traccia per lo scorrimento
+   continuo, ma solo se il movimento è consentito. Senza JS o con motion
+   ridotto resta una riga statica e leggibile. ---------- */
+
+(function () {
+  if (riduciMoto.matches) return;
+  document.querySelectorAll(".marquee-traccia").forEach(function (traccia) {
+    /* si duplicano le voci DENTRO la stessa traccia: la traccia diventa
+       larga due volte e l'animazione la trasla del 50% per un ciclo continuo.
+       Il marquee è già aria-hidden nel markup, la copia non serve annunciarla. */
+    var voci = Array.prototype.slice.call(traccia.children);
+    voci.forEach(function (voce) {
+      traccia.appendChild(voce.cloneNode(true));
+    });
+  });
+})();
+
 /* ---------- Spia orari: evita telefonate a negozio chiuso.
-   Orari reali: Lun–Ven 7:00–12:00 e 14:00–18:00, Sab 7:00–12:00,
-   Domenica chiuso. Fuso del negozio: Europe/Rome. ---------- */
+   Lun–Ven 7:00–12:00 e 14:00–18:00, Sab 7:00–12:00, Dom chiuso.
+   Fuso del negozio: Europe/Rome. ---------- */
 
 (function () {
   var spia = document.querySelector("[data-spia-orari]");
   if (!spia) return;
 
-  /* 0 = domenica … 6 = sabato; intervalli in minuti dalla mezzanotte */
   var ORARI = {
     1: [[420, 720], [840, 1080]],
     2: [[420, 720], [840, 1080]],
@@ -122,16 +177,14 @@ document.documentElement.classList.add("js");
   if (testo) spia.textContent = testo;
 })();
 
-/* ---------- Mappa a facciata: l'iframe OpenStreetMap entra solo
-   quando l'utente lo chiede. Zero byte di terze parti prima. ---------- */
+/* ---------- Mappa a facciata: iframe OpenStreetMap solo al clic ---------- */
 
 (function () {
   document.querySelectorAll("[data-mappa]").forEach(function (blocco) {
     var bottone = blocco.querySelector("[data-mappa-apri]");
     if (!bottone) return;
     bottone.addEventListener("click", function () {
-      /* Coordinate approssimative del civico: VERIFICARE CON IL CLIENTE
-         (vedi NOTES.md) */
+      /* Coordinate approssimative del civico: VERIFICARE CON IL CLIENTE */
       var lat = blocco.getAttribute("data-lat");
       var lon = blocco.getAttribute("data-lon");
       var bbox =
@@ -150,7 +203,7 @@ document.documentElement.classList.add("js");
   });
 })();
 
-/* ---------- Form: messaggi di errore specifici, in italiano.
+/* ---------- Form: messaggi di errore specifici in italiano.
    Senza JS resta la validazione nativa del browser. ---------- */
 
 (function () {

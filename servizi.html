@@ -7,8 +7,8 @@
   <meta name="description" content="Idraulica, assistenza caldaie, climatizzazione, ristrutturazione bagno, vendita al banco e impianti antincendio a Sesto San Giovanni. Negozio aperto dal 1997.">
   <!-- VERIFICARE CON IL CLIENTE: dominio definitivo (vale per canonical e sitemap) -->
   <link rel="canonical" href="https://DOMINIO-DA-CONFERMARE.example/servizi.html">
-  <!-- Niente cookie e niente analytics in v1: nessun banner necessario. -->
-  <link rel="preload" href="fonts/fraunces-400.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Niente cookie e niente analytics: nessun banner necessario. Font self-hosted. -->
+  <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
@@ -68,14 +68,17 @@
         <span class="nome">Fratelli Bollente</span>
       </a>
       <button class="menu-bottone" aria-expanded="false" aria-controls="nav-principale">Menu</button>
-      <nav id="nav-principale" class="nav" aria-label="Principale">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="servizi.html" aria-current="page">Servizi</a></li>
-          <li><a href="chi-siamo.html">Chi siamo</a></li>
-          <li><a href="contatti.html">Contatti</a></li>
-        </ul>
-      </nav>
+      <div class="testata-nav">
+        <nav id="nav-principale" class="nav" aria-label="Principale">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="servizi.html" aria-current="page">Servizi</a></li>
+            <li><a href="chi-siamo.html">Chi siamo</a></li>
+            <li><a href="contatti.html">Contatti</a></li>
+          </ul>
+        </nav>
+        <a class="bottone bottone-primario" href="tel:+39022428426">Chiama</a>
+      </div>
     </div>
   </header>
 
@@ -83,107 +86,205 @@
 
     <section class="hero" aria-labelledby="titolo-pagina">
       <div class="contenitore">
-        <h1 id="titolo-pagina">Cosa facciamo</h1>
-        <hr class="riga-bollente" aria-hidden="true">
-        <p class="sottotitolo prosa">Sei servizi e un banco dove chiedere, in via per Crescenzago 177.</p>
-        <nav class="sommario" aria-label="Servizi in questa pagina">
-          <ul>
-            <li><a href="#idraulica">Idraulica</a></li>
-            <li><a href="#caldaie">Caldaie</a></li>
-            <li><a href="#clima">Climatizzazione</a></li>
-            <li><a href="#bagno">Bagno</a></li>
-            <li><a href="#banco">Vendita al banco</a></li>
-            <li><a href="#antincendio">Antincendio</a></li>
-          </ul>
-        </nav>
+        <p class="eyebrow">Cosa facciamo</p>
+        <h1 id="titolo-pagina">Sei <span class="disegnata ocra">servizi<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" vector-effect="non-scaling-stroke" d="M4 8 C 42 3 74 3 104 6 S 168 9 196 5"/></svg></span> e un banco dove chiedere</h1>
+        <p class="lead">In via per Crescenzago 177. Il grosso è idraulica, caldaie e climatizzazione; il resto lo trovi qui sotto.</p>
+      </div>
+    </section>
+
+    <section class="senza-sopra" aria-label="Elenco dei servizi">
+      <div class="contenitore">
+        <div class="servizi-griglia">
+          <a class="card-servizio" href="#idraulica" data-anima>
+            <span class="card-num">01</span>
+            <h3>Idraulica</h3>
+            <p>Perdite, scarichi, scaldabagni, sanitari e rubinetteria.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+          <a class="card-servizio" href="#caldaie" data-anima>
+            <span class="card-num">02</span>
+            <h3>Riscaldamento e caldaie</h3>
+            <p>Manutenzione e prova fumi, sostituzione, libretto di impianto.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+          <a class="card-servizio" href="#clima" data-anima>
+            <span class="card-num">03</span>
+            <h3>Climatizzazione</h3>
+            <p>Installazione di split, manutenzione e ricariche.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+          <a class="card-servizio" href="#bagno" data-anima>
+            <span class="card-num">04</span>
+            <h3>Ristrutturazione bagno</h3>
+            <p>Il preventivo parte dall'esposizione accanto al negozio.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+          <a class="card-servizio" href="#banco" data-anima>
+            <span class="card-num">05</span>
+            <h3>Vendita al banco</h3>
+            <p>Ricambi e materiale termoidraulico, il pezzo si confronta.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+          <a class="card-servizio" href="#antincendio" data-anima>
+            <span class="card-num">06</span>
+            <h3>Impianti antincendio</h3>
+            <p>Realizzazione e manutenzione, da valutare caso per caso.</p>
+            <span class="card-freccia" aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- VERIFICARE CON IL CLIENTE: le liste dei lavori di TUTTE le sezioni
          di questa pagina vanno confermate voce per voce (NOTES.md, punto 6) -->
     <section class="servizio" id="idraulica" aria-labelledby="titolo-idraulica">
-      <div class="contenitore" data-anima>
-        <h2 id="titolo-idraulica">Idraulico a Sesto San Giovanni</h2>
-        <p class="prosa">Una perdita, uno scarico che non va, uno scaldabagno da cambiare. È il lavoro per cui il nostro telefono squilla dal 1997.</p>
-        <ul>
-          <li>Ricerca e riparazione di perdite</li>
-          <li>Sostituzione di scaldabagni</li>
-          <li>Sostituzione di sanitari e rubinetteria</li>
-          <li>Rifacimento dell'impianto idrico</li>
-          <li>Scarichi e sifoni</li>
-        </ul>
-        <p class="tel-cta">Per fissare un intervento: <a href="tel:+39022428426">02 2428426</a></p>
+      <div class="contenitore striscia">
+        <div class="servizio-intestazione" data-anima>
+          <p class="eyebrow">Servizio 01</p>
+          <span class="servizio-num">01</span>
+          <span class="rigo" aria-hidden="true"></span>
+        </div>
+        <div>
+          <h2 id="titolo-idraulica">Idraulico a Sesto San Giovanni</h2>
+          <p class="prosa">Una perdita, uno scarico che non va, uno scaldabagno da cambiare. È il lavoro per cui il nostro telefono squilla dal 1997.</p>
+          <ul class="lista-lavori">
+            <li>Ricerca e riparazione di perdite</li>
+            <li>Sostituzione di scaldabagni</li>
+            <li>Sostituzione di sanitari e rubinetteria</li>
+            <li>Rifacimento dell'impianto idrico</li>
+            <li>Scarichi e sifoni</li>
+          </ul>
+          <p class="tel-cta">Per fissare un intervento: <a href="tel:+39022428426">02 2428426</a></p>
+        </div>
       </div>
     </section>
 
-    <section class="servizio" id="caldaie" aria-labelledby="titolo-caldaie">
-      <div class="contenitore" data-anima>
-        <h2 id="titolo-caldaie">Assistenza caldaie a Sesto San Giovanni</h2>
-        <p class="prosa">Caldaie ne montiamo e ne seguiamo dal 1997. La manutenzione va fissata prima dell'inverno; la sostituzione conviene valutarla quando le riparazioni cominciano a costare più della caldaia.</p>
-        <ul>
-          <li>Manutenzione annuale e prova fumi</li>
-          <li>Sostituzione della caldaia</li>
-          <li>Compilazione del libretto di impianto</li>
-          <li>Radiatori e valvole termostatiche</li>
-          <li>Impianti di riscaldamento nuovi o rifatti</li>
-        </ul>
-        <p class="tel-cta">Per fissare la manutenzione: <a href="tel:+39022428426">02 2428426</a></p>
+    <section class="servizio sfondo-2" id="caldaie" aria-labelledby="titolo-caldaie">
+      <div class="contenitore striscia striscia-inversa">
+        <div class="servizio-intestazione" data-anima>
+          <p class="eyebrow">Servizio 02</p>
+          <span class="servizio-num">02</span>
+          <span class="rigo" aria-hidden="true"></span>
+        </div>
+        <div>
+          <h2 id="titolo-caldaie">Assistenza caldaie a Sesto San Giovanni</h2>
+          <p class="prosa">Caldaie ne montiamo e ne seguiamo dal 1997. La manutenzione va fissata prima dell'inverno; la sostituzione conviene valutarla quando le riparazioni cominciano a costare più della caldaia.</p>
+          <ul class="lista-lavori">
+            <li>Manutenzione annuale e prova fumi</li>
+            <li>Sostituzione della caldaia</li>
+            <li>Compilazione del libretto di impianto</li>
+            <li>Radiatori e valvole termostatiche</li>
+            <li>Impianti di riscaldamento nuovi o rifatti</li>
+          </ul>
+          <p class="tel-cta">Per fissare la manutenzione: <a href="tel:+39022428426">02 2428426</a></p>
+        </div>
       </div>
     </section>
 
     <section class="servizio" id="clima" aria-labelledby="titolo-clima">
-      <div class="contenitore" data-anima>
-        <h2 id="titolo-clima">Climatizzazione: installazione e manutenzione</h2>
-        <p class="prosa">Split nuovi, manutenzione e ricariche. Il momento giusto è la primavera: telefonate o passate dal banco, e fissiamo il sopralluogo.</p>
-        <ul>
-          <li>Installazione di climatizzatori mono e multisplit</li>
-          <li>Manutenzione e pulizia dei filtri</li>
-          <li>Ricarica del gas refrigerante</li>
-          <li>Spostamento di unità esistenti</li>
-        </ul>
-        <p class="tel-cta">Per un sopralluogo: <a href="tel:+39022428426">02 2428426</a></p>
+      <div class="contenitore striscia">
+        <div class="servizio-intestazione" data-anima>
+          <p class="eyebrow">Servizio 03</p>
+          <span class="servizio-num">03</span>
+          <span class="rigo" aria-hidden="true"></span>
+        </div>
+        <div>
+          <h2 id="titolo-clima">Climatizzazione: installazione e manutenzione</h2>
+          <p class="prosa">Split nuovi, manutenzione e ricariche. Il momento giusto è la primavera: telefonate o passate dal banco, e fissiamo il sopralluogo.</p>
+          <ul class="lista-lavori">
+            <li>Installazione di climatizzatori mono e multisplit</li>
+            <li>Manutenzione e pulizia dei filtri</li>
+            <li>Ricarica del gas refrigerante</li>
+            <li>Spostamento di unità esistenti</li>
+          </ul>
+          <p class="tel-cta">Per un sopralluogo: <a href="tel:+39022428426">02 2428426</a></p>
+        </div>
       </div>
     </section>
 
     <div class="contenitore">
-      <figure class="foto-segnaposto foto-larga">
-        <figcaption>FOTO: gli scaffali del banco con la minuteria e i ricambi, una mano che appoggia un raccordo sul bancone</figcaption>
+      <figure class="frame frame--largo riga-media" role="img" aria-label="Foto in arrivo: gli scaffali del banco con la minuteria e i ricambi, una mano che appoggia un raccordo sul bancone">
+        <span class="frame-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+          Il banco
+        </span>
+        <span class="frame-nota">Gli scaffali del banco con la minuteria e i ricambi, una mano che appoggia un raccordo sul bancone.</span>
       </figure>
     </div>
 
-    <section class="servizio" id="bagno" aria-labelledby="titolo-bagno">
-      <div class="contenitore" data-anima>
-        <h2 id="titolo-bagno">Ristrutturazione bagno a Sesto San Giovanni</h2>
-        <p class="prosa">Se il bagno è da rifare, il preventivo parte dall'esposizione accanto al negozio, non da un catalogo: quello che verrà montato lo vedi e lo tocchi prima.</p>
-        <ul>
-          <li>Ristrutturazione completa del bagno</li>
-          <li>Sostituzione della vasca con la doccia</li>
-          <li>Arredobagno: mobili, sanitari, rubinetterie</li>
-          <li>Piatti doccia e box</li>
-        </ul>
-        <p class="tel-cta">Per una visita in esposizione: <a href="tel:+39022428426">02 2428426</a></p>
+    <section class="servizio sfondo-2" id="bagno" aria-labelledby="titolo-bagno">
+      <div class="contenitore striscia striscia-inversa">
+        <div class="servizio-intestazione" data-anima>
+          <p class="eyebrow">Servizio 04</p>
+          <span class="servizio-num">04</span>
+          <span class="rigo" aria-hidden="true"></span>
+        </div>
+        <div>
+          <h2 id="titolo-bagno">Ristrutturazione bagno a Sesto San Giovanni</h2>
+          <p class="prosa">Se il bagno è da rifare, il preventivo parte dall'esposizione accanto al negozio, non da un catalogo: quello che verrà montato lo vedi e lo tocchi prima.</p>
+          <ul class="lista-lavori">
+            <li>Ristrutturazione completa del bagno</li>
+            <li>Sostituzione della vasca con la doccia</li>
+            <li>Arredobagno: mobili, sanitari, rubinetterie</li>
+            <li>Piatti doccia e box</li>
+          </ul>
+          <p class="tel-cta">Per una visita in esposizione: <a href="tel:+39022428426">02 2428426</a></p>
+        </div>
       </div>
     </section>
 
     <section class="servizio" id="banco" aria-labelledby="titolo-banco">
-      <div class="contenitore" data-anima>
-        <h2 id="titolo-banco">Vendita al banco di materiale termoidraulico</h2>
-        <p class="prosa">Al banco vendiamo materiale termoidraulico. Il pezzo rotto conviene portarlo: confrontarlo evita di comprare quello sbagliato.</p>
-        <ul>
-          <li>Ricambi per rubinetteria e sanitari</li>
-          <li>Raccorderia e tubi</li>
-          <li>Componenti per caldaie e scaldabagni</li>
-          <li>Materiale per l'impianto idrico</li>
-        </ul>
-        <p class="tel-cta">Per sapere se un pezzo c'è: <a href="tel:+39022428426">02 2428426</a></p>
+      <div class="contenitore striscia">
+        <div class="servizio-intestazione" data-anima>
+          <p class="eyebrow">Servizio 05</p>
+          <span class="servizio-num">05</span>
+          <span class="rigo" aria-hidden="true"></span>
+        </div>
+        <div>
+          <h2 id="titolo-banco">Vendita al banco di materiale termoidraulico</h2>
+          <p class="prosa">Al banco vendiamo materiale termoidraulico. Il pezzo rotto conviene portarlo: confrontarlo evita di comprare quello sbagliato.</p>
+          <ul class="lista-lavori">
+            <li>Ricambi per rubinetteria e sanitari</li>
+            <li>Raccorderia e tubi</li>
+            <li>Componenti per caldaie e scaldabagni</li>
+            <li>Materiale per l'impianto idrico</li>
+          </ul>
+          <p class="tel-cta">Per sapere se un pezzo c'è: <a href="tel:+39022428426">02 2428426</a></p>
+        </div>
       </div>
     </section>
 
-    <section class="servizio" id="antincendio" aria-labelledby="titolo-antincendio">
-      <div class="contenitore" data-anima>
-        <h2 id="titolo-antincendio">Impianti antincendio</h2>
-        <p class="prosa">Realizziamo impianti antincendio e ne facciamo la manutenzione. È un lavoro da valutare caso per caso: telefonate al negozio di via per Crescenzago e spiegate com'è fatto l'edificio.</p>
-        <p class="tel-cta">Per parlarne: <a href="tel:+39022428426">02 2428426</a></p>
+    <section class="servizio sfondo-2" id="antincendio" aria-labelledby="titolo-antincendio">
+      <div class="contenitore striscia striscia-inversa">
+        <div class="servizio-intestazione" data-anima>
+          <p class="eyebrow">Servizio 06</p>
+          <span class="servizio-num">06</span>
+          <span class="rigo" aria-hidden="true"></span>
+        </div>
+        <div>
+          <h2 id="titolo-antincendio">Impianti antincendio</h2>
+          <p class="prosa">Realizziamo impianti antincendio e ne facciamo la manutenzione. È un lavoro da valutare caso per caso: telefonate al negozio di via per Crescenzago e spiegate com'è fatto l'edificio.</p>
+          <p class="tel-cta">Per parlarne: <a href="tel:+39022428426">02 2428426</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-scura sezione" aria-labelledby="titolo-cta">
+      <div class="contenitore">
+        <div>
+          <p class="eyebrow">Il negozio</p>
+          <h2 class="display" id="titolo-cta">Passa in negozio o chiamaci</h2>
+          <p>Si entra, si spiega il problema, si trova il pezzo o si fissa l'intervento.</p>
+          <div class="cta-scura-azioni">
+            <a class="bottone bottone-primario" href="tel:+39022428426">Chiama il negozio</a>
+            <a class="link-freccia" href="contatti.html">Mappa e orari</a>
+          </div>
+        </div>
+        <div class="cta-dettagli">
+          <p><span class="valore">Via per Crescenzago 177</span><br>20099 Sesto San Giovanni (MI)</p>
+          <p><span class="valore">Lun–Ven</span> 7:00–12:00 e 14:00–18:00<br><span class="valore">Sabato</span> 7:00–12:00 · Domenica chiuso</p>
+          <p><a href="tel:+39022428426">02 2428426</a> · <a href="tel:+390289289611">02 89289611</a></p>
+        </div>
       </div>
     </section>
 
@@ -215,10 +316,10 @@
   </footer>
 
   <div class="barra-mobile">
-    <a class="bottone bottone-chiama" href="tel:+39022428426">Chiama</a>
+    <a class="bottone bottone-primario" href="tel:+39022428426">Chiama</a>
     <!-- VERIFICARE CON IL CLIENTE: numero WhatsApp reale, poi togliere
          l'attributo hidden e completare il link wa.me -->
-    <a class="bottone bottone-contorno" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
+    <a class="bottone bottone-ghost" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
   </div>
 
   <script src="js/main.js" defer></script>

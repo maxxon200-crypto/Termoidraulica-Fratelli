@@ -7,8 +7,8 @@
   <meta name="description" content="Informativa sul trattamento dei dati personali raccolti dal modulo di contatto di Termoidraulica Fratelli Bollente S.a.s.">
   <!-- VERIFICARE CON IL CLIENTE: dominio definitivo (vale per canonical e sitemap) -->
   <link rel="canonical" href="https://DOMINIO-DA-CONFERMARE.example/privacy.html">
-  <!-- Niente cookie e niente analytics in v1: nessun banner necessario. -->
-  <link rel="preload" href="fonts/fraunces-400.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Niente cookie e niente analytics: nessun banner necessario. Font self-hosted. -->
+  <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
@@ -23,14 +23,17 @@
         <span class="nome">Fratelli Bollente</span>
       </a>
       <button class="menu-bottone" aria-expanded="false" aria-controls="nav-principale">Menu</button>
-      <nav id="nav-principale" class="nav" aria-label="Principale">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="servizi.html">Servizi</a></li>
-          <li><a href="chi-siamo.html">Chi siamo</a></li>
-          <li><a href="contatti.html">Contatti</a></li>
-        </ul>
-      </nav>
+      <div class="testata-nav">
+        <nav id="nav-principale" class="nav" aria-label="Principale">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="servizi.html">Servizi</a></li>
+            <li><a href="chi-siamo.html">Chi siamo</a></li>
+            <li><a href="contatti.html">Contatti</a></li>
+          </ul>
+        </nav>
+        <a class="bottone bottone-primario" href="tel:+39022428426">Chiama</a>
+      </div>
     </div>
   </header>
 
@@ -38,18 +41,18 @@
 
     <section class="hero" aria-labelledby="titolo-pagina">
       <div class="contenitore">
+        <p class="eyebrow">Pagina di servizio</p>
         <h1 id="titolo-pagina">Informativa privacy</h1>
-        <hr class="riga-bollente" aria-hidden="true">
-        <p class="sottotitolo prosa">Come trattiamo i dati di chi ci scrive dal modulo di contatto.</p>
+        <p class="lead">Come trattiamo i dati di chi ci scrive dal modulo di contatto.</p>
       </div>
     </section>
 
     <!-- VERIFICARE CON IL CLIENTE: tutta l'informativa che segue è una
          struttura da completare con i dati del titolare e da far
          rivedere prima della pubblicazione. Non pubblicare così com'è. -->
-    <section aria-label="Informativa ai sensi dell'art. 13 del Regolamento UE 2016/679">
+    <section class="senza-sopra" aria-label="Informativa ai sensi dell'art. 13 del Regolamento UE 2016/679">
       <div class="contenitore">
-        <div class="colonna-racconto">
+        <div class="racconto">
           <h2>Titolare del trattamento</h2>
           <p>Termoidraulica Fratelli Bollente S.a.s., Via per Crescenzago 177, 20099 Sesto San Giovanni (MI), P.IVA 02689830962. [COMPLETARE: recapito e-mail del titolare]</p>
 
@@ -100,10 +103,10 @@
   </footer>
 
   <div class="barra-mobile">
-    <a class="bottone bottone-chiama" href="tel:+39022428426">Chiama</a>
+    <a class="bottone bottone-primario" href="tel:+39022428426">Chiama</a>
     <!-- VERIFICARE CON IL CLIENTE: numero WhatsApp reale, poi togliere
          l'attributo hidden e completare il link wa.me -->
-    <a class="bottone bottone-contorno" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
+    <a class="bottone bottone-ghost" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
   </div>
 
   <script src="js/main.js" defer></script>
