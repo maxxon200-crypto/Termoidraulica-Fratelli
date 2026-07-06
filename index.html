@@ -96,12 +96,17 @@
             <a href="servizi.html">Tutti i servizi</a>
           </div>
         </div>
-        <div class="card-negozio">
-          <p class="overline">Il negozio</p>
-          <address>Via per Crescenzago 177<br>Sesto San Giovanni (MI)</address>
-          <hr class="filetto" aria-hidden="true">
-          <p>Lun–Ven 7:00–12:00 e 14:00–18:00<br>Sabato 7:00–12:00</p>
-          <p class="spia" data-spia-orari aria-live="polite"></p>
+        <div class="hero-media">
+          <figure class="foto-segnaposto foto-ritratto">
+            <figcaption class="didascalia-corsiva">FOTO: il bancone del negozio, Vitale o Francesco al lavoro, luce naturale, orizzontale stretta</figcaption>
+          </figure>
+          <div class="card-negozio">
+            <p class="overline">Il negozio</p>
+            <address>Via per Crescenzago 177<br>Sesto San Giovanni (MI)</address>
+            <hr class="filetto" aria-hidden="true">
+            <p>Lun–Ven 7:00–12:00 e 14:00–18:00<br>Sabato 7:00–12:00</p>
+            <p class="spia" data-spia-orari aria-live="polite"></p>
+          </div>
         </div>
       </div>
     </section>
@@ -121,29 +126,43 @@
              vanno confermate voce per voce (vedi NOTES.md, punto 6) -->
         <div class="card-griglia">
           <article class="card-servizio" data-anima>
+            <svg class="icona-card" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3c3.5 4.3 6 7.5 6 10.6a6 6 0 0 1-12 0C6 10.5 8.5 7.3 12 3Z"/>
+            </svg>
             <h3><a href="servizi.html#idraulica">Idraulica</a></h3>
             <ul>
               <li>Ricerca e riparazione di perdite</li>
               <li>Sostituzione di scaldabagni</li>
               <li>Sanitari e rubinetteria</li>
               <li>Rifacimento dell'impianto idrico</li>
+              <li>Scarichi e sifoni</li>
             </ul>
           </article>
           <article class="card-servizio" data-anima>
+            <svg class="icona-card" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3c.5 3.4 2.9 4.7 4.4 6.8a6.6 6.6 0 0 1 1.1 3.7A5.5 5.5 0 0 1 12 19a5.5 5.5 0 0 1-5.5-5.5c0-2 .9-3.5 2.1-5C10 6.7 11.6 5.6 12 3Z"/>
+              <path d="M12 19c-1.7 0-2.7-1.2-2.7-2.6 0-1.5 1.5-2.6 2.7-4 1.2 1.4 2.7 2.5 2.7 4 0 1.4-1 2.6-2.7 2.6Z"/>
+            </svg>
             <h3><a href="servizi.html#caldaie">Riscaldamento e caldaie</a></h3>
             <ul>
               <li>Manutenzione annuale e prova fumi</li>
               <li>Sostituzione della caldaia</li>
+              <li>Rapporto di controllo di efficienza energetica</li>
               <li>Radiatori e valvole termostatiche</li>
               <li>Libretto di impianto</li>
             </ul>
           </article>
           <article class="card-servizio" data-anima>
+            <svg class="icona-card" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2v20M3.3 7l17.4 10M20.7 7 3.3 17"/>
+              <path d="m9.2 4.6 2.8 2.3 2.8-2.3M9.2 19.4l2.8-2.3 2.8 2.3"/>
+            </svg>
             <h3><a href="servizi.html#clima">Climatizzazione</a></h3>
             <ul>
               <li>Installazione di climatizzatori</li>
               <li>Manutenzione e pulizia dei filtri</li>
               <li>Ricarica del gas refrigerante</li>
+              <li>Spostamento di unità esistenti</li>
               <li>Sopralluogo e preventivo</li>
             </ul>
           </article>
@@ -166,7 +185,8 @@
     </section>
     <!-- FINE SEZIONE DA VERIFICARE -->
 
-    <section aria-labelledby="titolo-esposizione">
+    <!-- Unica banda scura della pagina (FIX 1): non aggiungerne altre -->
+    <section class="banda-scura" aria-labelledby="titolo-esposizione">
       <div class="contenitore striscia striscia-inversa">
         <div data-anima>
           <p class="overline">Arredobagno</p>

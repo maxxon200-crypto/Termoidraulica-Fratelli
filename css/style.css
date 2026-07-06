@@ -58,7 +58,7 @@
   --ottone: #b08d57;         /* solo filetti 1px e dettagli */
   --cemento: #8c857b;        /* solo testo grande decorativo su Calce */
   --nebbia: #dcd6cc;
-  --cemento-testo: #615b53;  /* Cemento scurito: AA su Calce e Nebbia */
+  --cemento-testo: #6e675d;  /* Cemento scurito: 4.96:1 su Calce. MAI su Nebbia (3.86, fallisce) */
   --brace-cta: #b04426;      /* Brace scurito: AA con testo Calce */
   --brace-cta-hover: #9c3b20;
   --calce-velo: rgba(244, 241, 236, 0.2); /* solo filetti nel footer */
@@ -191,10 +191,10 @@ section,
    L'unico punto del sito dove Petrolio e Brace si toccano. ---------- */
 
 .riga-bollente {
-  width: 96px;
-  height: 2px;
+  width: 120px;
+  height: 3px;
   border: 0;
-  margin: 24px 0 32px;
+  margin: 24px 0;
   background: linear-gradient(90deg, var(--petrolio), var(--brace));
 }
 
@@ -383,6 +383,54 @@ section,
   }
 }
 
+/* ---------- Banda scura (unica sulla pagina): esposizione, Home.
+   Testo Calce (8.79:1), didascalie e overline Nebbia (6.86:1).
+   Cemento su Petrolio è vietato: fallisce il contrasto. ---------- */
+
+.banda-scura {
+  background: var(--petrolio);
+  color: var(--calce);
+}
+.banda-scura .overline {
+  color: var(--nebbia);
+}
+.banda-scura a {
+  color: var(--calce);
+}
+.banda-scura .foto-segnaposto figcaption {
+  color: var(--nebbia);
+}
+.banda-scura :focus-visible {
+  outline-color: var(--calce);
+}
+
+/* ---------- Colonna media della hero: foto 4:5 + card orari
+   che ne copre l'angolo in basso a sinistra di 24px ---------- */
+
+.hero-media {
+  position: relative;
+}
+.foto-ritratto {
+  aspect-ratio: 4 / 5;
+}
+.didascalia-corsiva {
+  font-style: italic;
+}
+.hero-media .card-negozio {
+  position: relative;
+  margin-top: -24px;
+  margin-left: -24px;
+  max-width: 320px;
+}
+@media (max-width: 767px) {
+  /* niente sovrapposizione: foto sotto il testo, card sotto la foto */
+  .hero-media .card-negozio {
+    margin-top: 24px;
+    margin-left: 0;
+    max-width: none;
+  }
+}
+
 /* ---------- Segnaposto foto ---------- */
 
 .foto-segnaposto {
@@ -415,6 +463,7 @@ section,
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
   margin-top: 48px;
+  align-items: start; /* l'altezza segue il contenuto, mai forzata */
 }
 .card-servizio {
   background: var(--nebbia);
@@ -422,7 +471,14 @@ section,
   padding: 32px;
   border-top: 1px solid var(--ottone);
 }
+/* Icona di card: Ottone, decorativa, sempre affiancata al titolo */
+.icona-card {
+  display: block;
+  color: var(--ottone);
+  margin-bottom: 16px;
+}
 .card-servizio h3 {
+  font-size: 1.5rem; /* minimo 24px, anche su mobile */
   margin-bottom: 16px;
 }
 .card-servizio h3 a {
@@ -442,7 +498,7 @@ section,
 .card-servizio li {
   padding: 8px 0;
   border-bottom: 1px solid var(--calce);
-  font-size: 0.9375rem;
+  font-size: 1rem; /* minimo 16px, colore Ghisa ereditato */
 }
 .card-servizio li:last-child {
   border-bottom: 0;
