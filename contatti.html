@@ -7,8 +7,8 @@
   <meta name="description" content="Siamo in via per Crescenzago 177 a Sesto San Giovanni. Tel 02 2428426 e 02 89289611. Lun–Ven 7–12 e 14–18, sabato mattina. Mappa e modulo di contatto.">
   <!-- VERIFICARE CON IL CLIENTE: dominio definitivo (vale per canonical e sitemap) -->
   <link rel="canonical" href="https://DOMINIO-DA-CONFERMARE.example/contatti.html">
-  <!-- Niente cookie e niente analytics in v1: nessun banner necessario. -->
-  <link rel="preload" href="fonts/fraunces-400.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Niente cookie e niente analytics: nessun banner necessario. Font self-hosted. -->
+  <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
@@ -68,14 +68,17 @@
         <span class="nome">Fratelli Bollente</span>
       </a>
       <button class="menu-bottone" aria-expanded="false" aria-controls="nav-principale">Menu</button>
-      <nav id="nav-principale" class="nav" aria-label="Principale">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="servizi.html">Servizi</a></li>
-          <li><a href="chi-siamo.html">Chi siamo</a></li>
-          <li><a href="contatti.html" aria-current="page">Contatti</a></li>
-        </ul>
-      </nav>
+      <div class="testata-nav">
+        <nav id="nav-principale" class="nav" aria-label="Principale">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="servizi.html">Servizi</a></li>
+            <li><a href="chi-siamo.html">Chi siamo</a></li>
+            <li><a href="contatti.html" aria-current="page">Contatti</a></li>
+          </ul>
+        </nav>
+        <a class="bottone bottone-primario" href="tel:+39022428426">Chiama</a>
+      </div>
     </div>
   </header>
 
@@ -83,8 +86,8 @@
 
     <section class="hero" aria-labelledby="titolo-pagina">
       <div class="contenitore">
-        <h1 id="titolo-pagina">Dove siamo, quando ci siamo</h1>
-        <hr class="riga-bollente" aria-hidden="true">
+        <p class="eyebrow">Contatti e orari</p>
+        <h1 id="titolo-pagina">Dove siamo, quando <span class="disegnata">ci siamo<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" vector-effect="non-scaling-stroke" d="M4 8 C 42 3 74 3 104 6 S 168 9 196 5"/></svg></span></h1>
       </div>
     </section>
 
@@ -106,20 +109,24 @@
             <tr><th scope="row">Domenica</th><td>chiuso</td></tr>
           </table>
         </div>
-        <div class="mappa" data-mappa data-lat="45.519" data-lon="9.248">
-          <button class="bottone bottone-petrolio" data-mappa-apri>Apri la mappa</button>
-          <a href="https://www.openstreetmap.org/?mlat=45.519&amp;mlon=9.248#map=17/45.519/9.248" target="_blank" rel="noopener">Apri in OpenStreetMap</a>
+        <div class="striscia-media">
+          <div class="mappa" data-mappa data-lat="45.519" data-lon="9.248">
+            <p><strong>Via per Crescenzago 177</strong><br>20099 Sesto San Giovanni (MI)</p>
+            <button class="bottone bottone-ghost" data-mappa-apri>Apri la mappa</button>
+            <a href="https://www.openstreetmap.org/?mlat=45.519&amp;mlon=9.248#map=17/45.519/9.248" target="_blank" rel="noopener">Apri in OpenStreetMap</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section aria-labelledby="titolo-form">
+    <section class="sezione sfondo-2" aria-labelledby="titolo-form">
       <div class="contenitore">
-        <h2 id="titolo-form">Scrivici</h2>
-        <p class="prosa">Se non è urgente, lascia un messaggio. Per un guasto, telefona al negozio: si fa prima.</p>
+        <p class="eyebrow">Scrivici</p>
+        <h2 id="titolo-form">Un messaggio, se non è urgente</h2>
+        <p class="lead">Per un guasto, telefona al negozio: si fa prima.</p>
         <!-- SOSTITUIRE l'action con l'endpoint Formspree del cliente
              (o con un mailto, se preferisce): vedi NOTES.md -->
-        <form data-form-contatti action="https://formspree.io/f/IDDACONFERMARE" method="POST">
+        <form class="modulo" data-form-contatti action="https://formspree.io/f/IDDACONFERMARE" method="POST">
           <div class="campo">
             <label for="nome">Nome</label>
             <input type="text" id="nome" name="nome" required autocomplete="name" aria-describedby="errore-nome">
@@ -135,9 +142,27 @@
             <textarea id="messaggio" name="messaggio" rows="6" required aria-describedby="errore-messaggio"></textarea>
             <p class="errore" id="errore-messaggio" hidden></p>
           </div>
-          <button class="bottone bottone-petrolio" type="submit">Invia il messaggio</button>
+          <button class="bottone bottone-primario" type="submit">Invia il messaggio</button>
           <p class="nota-privacy">Inviando il modulo dichiari di aver letto l'<a href="privacy.html">informativa privacy</a>.</p>
         </form>
+      </div>
+    </section>
+
+    <section class="cta-scura sezione" aria-labelledby="titolo-cta">
+      <div class="contenitore">
+        <div>
+          <p class="eyebrow">Il negozio</p>
+          <h2 class="display" id="titolo-cta">Passa in negozio o chiamaci</h2>
+          <p>Si entra, si spiega il problema, si trova il pezzo o si fissa l'intervento.</p>
+          <div class="cta-scura-azioni">
+            <a class="bottone bottone-primario" href="tel:+39022428426">Chiama il negozio</a>
+            <a class="link-freccia" href="tel:+390289289611">Oppure 02 89289611</a>
+          </div>
+        </div>
+        <div class="cta-dettagli">
+          <p><span class="valore">Via per Crescenzago 177</span><br>20099 Sesto San Giovanni (MI)</p>
+          <p><span class="valore">Lun–Ven</span> 7:00–12:00 e 14:00–18:00<br><span class="valore">Sabato</span> 7:00–12:00 · Domenica chiuso</p>
+        </div>
       </div>
     </section>
 
@@ -169,10 +194,10 @@
   </footer>
 
   <div class="barra-mobile">
-    <a class="bottone bottone-chiama" href="tel:+39022428426">Chiama</a>
+    <a class="bottone bottone-primario" href="tel:+39022428426">Chiama</a>
     <!-- VERIFICARE CON IL CLIENTE: numero WhatsApp reale, poi togliere
          l'attributo hidden e completare il link wa.me -->
-    <a class="bottone bottone-contorno" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
+    <a class="bottone bottone-ghost" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
   </div>
 
   <script src="js/main.js" defer></script>
