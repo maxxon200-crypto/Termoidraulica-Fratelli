@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contatti e orari | Termoidraulica Fratelli Bollente</title>
+  <meta name="description" content="Siamo in via per Crescenzago 177 a Sesto San Giovanni. Tel 02 2428426 e 02 89289611. Lun–Ven 7–12 e 14–18, sabato mattina. Mappa e modulo di contatto.">
+  <!-- VERIFICARE CON IL CLIENTE: dominio definitivo (vale per canonical e sitemap) -->
+  <link rel="canonical" href="https://DOMINIO-DA-CONFERMARE.example/contatti.html">
+  <!-- Niente cookie e niente analytics in v1: nessun banner necessario. -->
+  <link rel="preload" href="fonts/fraunces-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Coordinate geo approssimative della via: VERIFICARE CON IL CLIENTE (NOTES.md) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Plumber",
+    "name": "Termoidraulica Fratelli Bollente S.a.s.",
+    "url": "https://DOMINIO-DA-CONFERMARE.example/",
+    "telephone": ["+39 02 2428426", "+39 02 89289611"],
+    "vatID": "02689830962",
+    "foundingDate": "1997",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via per Crescenzago 177",
+      "postalCode": "20099",
+      "addressLocality": "Sesto San Giovanni",
+      "addressRegion": "MI",
+      "addressCountry": "IT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.519,
+      "longitude": 9.248
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "07:00",
+        "closes": "12:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "14:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "07:00",
+        "closes": "12:00"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="salta" href="#contenuto">Salta al contenuto</a>
+
+  <header class="testata">
+    <div class="contenitore testata-interna">
+      <a class="wordmark" href="index.html">
+        <span class="sopra">Termoidraulica</span>
+        <span class="nome">Fratelli Bollente</span>
+      </a>
+      <button class="menu-bottone" aria-expanded="false" aria-controls="nav-principale">Menu</button>
+      <nav id="nav-principale" class="nav" aria-label="Principale">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="servizi.html">Servizi</a></li>
+          <li><a href="chi-siamo.html">Chi siamo</a></li>
+          <li><a href="contatti.html" aria-current="page">Contatti</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenuto">
+
+    <section class="hero" aria-labelledby="titolo-pagina">
+      <div class="contenitore">
+        <h1 id="titolo-pagina">Dove siamo, quando ci siamo</h1>
+        <hr class="riga-bollente" aria-hidden="true">
+      </div>
+    </section>
+
+    <section class="senza-sopra" aria-label="Indirizzo, telefoni e orari">
+      <div class="contenitore striscia">
+        <div>
+          <address class="recapiti">
+            <strong>Via per Crescenzago 177</strong><br>
+            20099 Sesto San Giovanni (MI)
+          </address>
+          <p class="telefoni">
+            <a href="tel:+39022428426">02 2428426</a><br>
+            <a href="tel:+390289289611">02 89289611</a>
+          </p>
+          <table class="tabella-orari">
+            <caption>Orari</caption>
+            <tr><th scope="row">Lun–Ven</th><td>7:00–12:00 e 14:00–18:00</td></tr>
+            <tr><th scope="row">Sabato</th><td>7:00–12:00</td></tr>
+            <tr><th scope="row">Domenica</th><td>chiuso</td></tr>
+          </table>
+        </div>
+        <div class="mappa" data-mappa data-lat="45.519" data-lon="9.248">
+          <button class="bottone bottone-petrolio" data-mappa-apri>Apri la mappa</button>
+          <a href="https://www.openstreetmap.org/?mlat=45.519&amp;mlon=9.248#map=17/45.519/9.248" target="_blank" rel="noopener">Apri in OpenStreetMap</a>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="titolo-form">
+      <div class="contenitore">
+        <h2 id="titolo-form">Scrivici</h2>
+        <p class="prosa">Se non è urgente, lascia un messaggio. Per un guasto, telefona al negozio: si fa prima.</p>
+        <!-- SOSTITUIRE l'action con l'endpoint Formspree del cliente
+             (o con un mailto, se preferisce): vedi NOTES.md -->
+        <form data-form-contatti action="https://formspree.io/f/IDDACONFERMARE" method="POST">
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required autocomplete="name" aria-describedby="errore-nome">
+            <p class="errore" id="errore-nome" hidden></p>
+          </div>
+          <div class="campo">
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" name="telefono" required autocomplete="tel" aria-describedby="errore-telefono">
+            <p class="errore" id="errore-telefono" hidden></p>
+          </div>
+          <div class="campo">
+            <label for="messaggio">Messaggio</label>
+            <textarea id="messaggio" name="messaggio" rows="6" required aria-describedby="errore-messaggio"></textarea>
+            <p class="errore" id="errore-messaggio" hidden></p>
+          </div>
+          <button class="bottone bottone-petrolio" type="submit">Invia il messaggio</button>
+          <p class="nota-privacy">Inviando il modulo dichiari di aver letto l'<a href="privacy.html">informativa privacy</a>.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="piede">
+    <div class="contenitore piede-griglia">
+      <div>
+        <p class="wordmark-piede">Fratelli Bollente</p>
+        <p class="minuta">Termoidraulica Fratelli Bollente S.a.s.<br>P.IVA 02689830962</p>
+      </div>
+      <address>
+        Via per Crescenzago 177<br>
+        20099 Sesto San Giovanni (MI)<br>
+        <a href="tel:+39022428426">02 2428426</a><br>
+        <a href="tel:+390289289611">02 89289611</a>
+      </address>
+      <div>
+        <p class="minuta">Lun–Ven 7:00–12:00 e 14:00–18:00<br>Sabato 7:00–12:00 · Domenica chiuso</p>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="servizi.html">Servizi</a></li>
+          <li><a href="chi-siamo.html">Chi siamo</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <li><a href="privacy.html">Informativa privacy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <div class="barra-mobile">
+    <a class="bottone bottone-chiama" href="tel:+39022428426">Chiama</a>
+    <!-- VERIFICARE CON IL CLIENTE: numero WhatsApp reale, poi togliere
+         l'attributo hidden e completare il link wa.me -->
+    <a class="bottone bottone-contorno" href="https://wa.me/39NUMERODACONFERMARE" hidden>WhatsApp</a>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

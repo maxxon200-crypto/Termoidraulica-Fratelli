@@ -1,0 +1,830 @@
+/* ============================================================
+   Termoidraulica Fratelli Bollente · foglio di stile unico
+   Palette e regole d'uso: vedi DESIGN.md (vincolante).
+   Il Brace compare solo: estremità della riga Bollente,
+   bottoni Chiama (sfumatura --brace-cta). In nessun altro posto.
+   ============================================================ */
+
+/* ---------- Font (woff2 self-hosted, subset latin) ---------- */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+/* Fallback a metrica corretta per l'H1: riduce il salto al caricamento
+   di Fraunces (CLS). */
+@font-face {
+  font-family: "Fraunces-fallback";
+  src: local("Georgia");
+  size-adjust: 104%;
+  ascent-override: 96%;
+  descent-override: 26%;
+  line-gap-override: 0%;
+}
+
+/* ---------- Token ---------- */
+
+:root {
+  --ghisa: #211d1a;
+  --calce: #f4f1ec;
+  --petrolio: #1c4a47;
+  --brace: #c24e30;          /* solo estremità riga Bollente */
+  --ottone: #b08d57;         /* solo filetti 1px e dettagli */
+  --cemento: #8c857b;        /* solo testo grande decorativo su Calce */
+  --nebbia: #dcd6cc;
+  --cemento-testo: #6e675d;  /* Cemento scurito: 4.96:1 su Calce. MAI su Nebbia (3.86, fallisce) */
+  --brace-cta: #b04426;      /* Brace scurito: AA con testo Calce */
+  --brace-cta-hover: #9c3b20;
+  --calce-velo: rgba(244, 241, 236, 0.2); /* solo filetti nel footer */
+  --serif: "Fraunces", "Fraunces-fallback", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --spazio-sezione: 96px;
+  --larghezza: 1140px;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* hidden vince sempre, anche sui .bottone con display proprio
+   (il bottone WhatsApp resta nascosto finché il numero non è confermato) */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: var(--calce);
+  color: var(--ghisa);
+  font: 400 1.0625rem/1.6 var(--sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 16px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-size: 2.25rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+
+p,
+ul,
+ol,
+table {
+  margin: 0 0 16px;
+}
+
+.prosa {
+  max-width: 34em; /* 60–70 caratteri per riga */
+}
+
+a {
+  color: var(--petrolio);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* Hover: resta Petrolio (il rosso è solo dei bottoni Chiama),
+   cambia solo il peso della sottolineatura */
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--petrolio);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--petrolio);
+  color: var(--calce);
+}
+
+.salta {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  background: var(--petrolio);
+  color: var(--calce);
+  padding: 12px 16px;
+  z-index: 10;
+}
+.salta:focus {
+  left: 8px;
+}
+
+.contenitore {
+  max-width: var(--larghezza);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+section,
+.sezione {
+  padding-block: var(--spazio-sezione);
+}
+
+/* Prima sezione dopo la hero: niente doppio respiro */
+.senza-sopra {
+  padding-top: 0;
+}
+
+/* Overline di sezione: sempre Petrolio, sempre con testo */
+.overline {
+  font: 500 0.75rem/1 var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--petrolio);
+  margin: 0 0 16px;
+}
+
+/* Filetto Ottone: solo 1px, solo decorativo */
+.filetto {
+  border: 0;
+  border-top: 1px solid var(--ottone);
+  margin: 0;
+}
+
+/* ---------- Riga Bollente: una sola per pagina, sotto l'H1.
+   L'unico punto del sito dove Petrolio e Brace si toccano. ---------- */
+
+.riga-bollente {
+  width: 120px;
+  height: 3px;
+  border: 0;
+  margin: 24px 0;
+  background: linear-gradient(90deg, var(--petrolio), var(--brace));
+}
+
+/* ---------- Bottoni ---------- */
+
+.bottone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  font: 600 1rem var(--sans);
+  text-decoration: none;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.bottone-chiama {
+  background: var(--brace-cta);
+  color: var(--calce);
+}
+.bottone-chiama:hover {
+  background: var(--brace-cta-hover);
+  color: var(--calce);
+}
+.bottone-petrolio {
+  background: var(--petrolio);
+  color: var(--calce);
+}
+.bottone-petrolio:hover {
+  background: var(--ghisa);
+  color: var(--calce);
+}
+.bottone-contorno {
+  background: transparent;
+  color: var(--petrolio);
+  border: 1px solid var(--petrolio);
+}
+.bottone-contorno:hover {
+  background: var(--petrolio);
+  color: var(--calce);
+}
+
+/* ---------- Testata ---------- */
+
+.testata {
+  border-bottom: 1px solid var(--ottone);
+}
+.testata-interna {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 72px;
+  flex-wrap: wrap;
+  padding-block: 12px;
+}
+.wordmark {
+  text-decoration: none;
+  color: var(--ghisa);
+  line-height: 1.2;
+}
+.wordmark .sopra {
+  display: block;
+  font: 500 0.625rem/1 var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.wordmark .nome {
+  display: block;
+  font: 400 1.375rem/1 var(--serif);
+}
+.menu-bottone {
+  display: none;
+  font: 500 0.9375rem var(--sans);
+  background: none;
+  border: 1px solid var(--petrolio);
+  color: var(--petrolio);
+  border-radius: 2px;
+  min-height: 44px;
+  padding: 0 16px;
+  cursor: pointer;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+.nav a {
+  font: 500 0.9375rem var(--sans);
+  color: var(--ghisa);
+  text-decoration: none;
+  padding: 12px 0;
+  display: inline-block;
+}
+.nav a:hover {
+  color: var(--petrolio);
+}
+.nav a[aria-current="page"] {
+  border-bottom: 2px solid var(--petrolio);
+}
+
+@media (max-width: 767px) {
+  .menu-bottone {
+    display: inline-flex;
+    align-items: center;
+  }
+  .nav {
+    flex-basis: 100%;
+  }
+  html.js .nav[data-chiuso] {
+    display: none;
+  }
+  .nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding-block: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 12px 0;
+  }
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding-block: var(--spazio-sezione);
+}
+.hero-griglia {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: 48px;
+  align-items: start;
+}
+.hero .sottotitolo {
+  font-size: 1.1875rem;
+  max-width: 30em;
+}
+.hero-azioni {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+/* Card negozio: orari e indirizzo come oggetto funzionale */
+.card-negozio {
+  background: var(--nebbia);
+  border-radius: 2px;
+  padding: 32px;
+}
+.card-negozio .overline {
+  margin-bottom: 8px;
+}
+.card-negozio address {
+  font-style: normal;
+  margin-bottom: 16px;
+}
+.card-negozio .filetto {
+  margin-block: 16px;
+}
+.card-negozio p {
+  margin: 0;
+}
+/* Riga spia: spazio riservato nel markup, il JS scrive senza spostare nulla */
+.spia {
+  min-height: 1.6em;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  .hero-griglia {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  /* Sulla Home mobile la chiamata è della barra fissa:
+     mai due bottoni rossi nello stesso schermo. */
+  .hero-azioni .bottone-chiama {
+    display: none;
+  }
+}
+
+/* ---------- Banda scura (unica sulla pagina): esposizione, Home.
+   Testo Calce (8.79:1), didascalie e overline Nebbia (6.86:1).
+   Cemento su Petrolio è vietato: fallisce il contrasto. ---------- */
+
+.banda-scura {
+  background: var(--petrolio);
+  color: var(--calce);
+}
+.banda-scura .overline {
+  color: var(--nebbia);
+}
+.banda-scura a {
+  color: var(--calce);
+}
+.banda-scura .foto-segnaposto figcaption {
+  color: var(--nebbia);
+}
+.banda-scura :focus-visible {
+  outline-color: var(--calce);
+}
+
+/* ---------- Colonna media della hero: foto 4:5 + card orari
+   che ne copre l'angolo in basso a sinistra di 24px ---------- */
+
+.hero-media {
+  position: relative;
+}
+.foto-ritratto {
+  aspect-ratio: 4 / 5;
+}
+.didascalia-corsiva {
+  font-style: italic;
+}
+.hero-media .card-negozio {
+  position: relative;
+  margin-top: -24px;
+  margin-left: -24px;
+  max-width: 320px;
+}
+@media (max-width: 767px) {
+  /* niente sovrapposizione: foto sotto il testo, card sotto la foto */
+  .hero-media .card-negozio {
+    margin-top: 24px;
+    margin-left: 0;
+    max-width: none;
+  }
+}
+
+/* ---------- Segnaposto foto ---------- */
+
+.foto-segnaposto {
+  margin: 0;
+  border: 1px solid var(--ottone);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  min-height: 200px;
+}
+.foto-segnaposto figcaption {
+  font-size: 0.875rem;
+  color: var(--cemento-testo);
+  max-width: 36em;
+}
+.foto-larga {
+  aspect-ratio: 21 / 9;
+}
+.foto-media {
+  aspect-ratio: 4 / 3;
+}
+
+/* ---------- Card servizi (Home) ---------- */
+
+.card-griglia {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+  align-items: start; /* l'altezza segue il contenuto, mai forzata */
+}
+.card-servizio {
+  background: var(--nebbia);
+  border-radius: 2px;
+  padding: 32px;
+  border-top: 1px solid var(--ottone);
+}
+/* Icona di card: Ottone, decorativa, sempre affiancata al titolo */
+.icona-card {
+  display: block;
+  color: var(--ottone);
+  margin-bottom: 16px;
+}
+.card-servizio h3 {
+  font-size: 1.5rem; /* minimo 24px, anche su mobile */
+  margin-bottom: 16px;
+}
+.card-servizio h3 a {
+  color: var(--ghisa);
+  text-decoration: none;
+}
+.card-servizio h3 a:hover {
+  color: var(--petrolio);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.card-servizio ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.card-servizio li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--calce);
+  font-size: 1rem; /* minimo 16px, colore Ghisa ereditato */
+}
+.card-servizio li:last-child {
+  border-bottom: 0;
+}
+@media (min-width: 768px) {
+  /* Card centrale abbassata: stessa gerarchia, silhouette non da template */
+  .card-servizio:nth-child(2) {
+    margin-top: 32px;
+  }
+}
+@media (max-width: 767px) {
+  .card-griglia {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Strisce a due colonne ---------- */
+
+.striscia {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 48px;
+  align-items: center;
+}
+.striscia-inversa {
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+}
+@media (max-width: 767px) {
+  .striscia,
+  .striscia-inversa {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ---------- Coppia di foto affiancate ---------- */
+
+.griglia-due {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 767px) {
+  .griglia-due {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Colonna del racconto (chi siamo) ---------- */
+
+.colonna-racconto {
+  max-width: 34em;
+  margin-inline: auto;
+}
+
+/* ---------- Mappa a facciata: zero byte finché non si clicca ---------- */
+
+.mappa {
+  background: var(--nebbia);
+  border-radius: 2px;
+  padding: 32px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  align-items: flex-start;
+}
+.mappa p {
+  margin: 0;
+}
+/* Il bottone serve solo con JS attivo; il link esterno funziona sempre */
+.mappa .bottone {
+  display: none;
+}
+html.js .mappa .bottone {
+  display: inline-flex;
+}
+.mappa iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: 2px;
+}
+
+/* ---------- Recapiti (contatti) ---------- */
+
+.recapiti {
+  font-style: normal;
+  font-size: 1.1875rem;
+  margin-bottom: 16px;
+}
+.telefoni {
+  font: 600 1.625rem/1.5 var(--sans);
+  margin-bottom: 32px;
+}
+.telefoni a {
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+
+/* ---------- Tabella orari ---------- */
+
+.tabella-orari {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 26em;
+}
+.tabella-orari caption {
+  text-align: left;
+  font: 500 0.75rem/1 var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--petrolio);
+  padding-bottom: 16px;
+}
+.tabella-orari th,
+.tabella-orari td {
+  text-align: left;
+  padding: 12px 16px 12px 0;
+  border-bottom: 1px solid var(--ottone);
+  font-weight: 400;
+  vertical-align: top;
+}
+.tabella-orari th {
+  font-weight: 500;
+  padding-right: 32px;
+  white-space: nowrap;
+}
+
+/* ---------- Sezioni servizi (pagina servizi) ---------- */
+
+.servizio {
+  border-top: 1px solid var(--ottone);
+  padding-block: var(--spazio-sezione);
+}
+.servizio ul {
+  list-style: none;
+  padding: 0;
+  max-width: 34em;
+}
+.servizio li {
+  padding: 8px 0 8px 20px;
+  position: relative;
+}
+.servizio li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.1em;
+  width: 8px;
+  height: 1px;
+  background: var(--ottone);
+}
+.tel-cta {
+  font: 600 1.125rem var(--sans);
+  margin-top: 24px;
+}
+.sommario ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+}
+.sommario a {
+  font: 500 0.9375rem var(--sans);
+  display: inline-block;
+  padding: 8px 0;
+}
+
+/* ---------- Form ---------- */
+
+.campo {
+  margin-bottom: 24px;
+  max-width: 34em;
+}
+.campo label {
+  display: block;
+  font: 500 0.9375rem var(--sans);
+  margin-bottom: 8px;
+}
+.campo input,
+.campo textarea {
+  width: 100%;
+  background: var(--nebbia);
+  border: 1px solid var(--ottone);
+  border-radius: 2px;
+  padding: 12px;
+  font: 400 1rem var(--sans);
+  color: var(--ghisa);
+}
+.campo input:focus-visible,
+.campo textarea:focus-visible {
+  outline: 2px solid var(--petrolio);
+  outline-offset: 2px;
+}
+/* Errore: niente rosso, il registro Brace vale anche qui */
+.campo.errato input,
+.campo.errato textarea {
+  border: 2px solid var(--ghisa);
+}
+.errore {
+  font: 500 0.875rem var(--sans);
+  color: var(--ghisa);
+  margin: 8px 0 0;
+}
+.nota-privacy {
+  font-size: 0.875rem;
+  color: var(--cemento-testo);
+  max-width: 34em;
+}
+
+/* ---------- Footer ---------- */
+
+.piede {
+  background: var(--petrolio);
+  color: var(--calce);
+  padding-block: 64px;
+  margin-top: var(--spazio-sezione);
+}
+.piede a {
+  color: var(--calce);
+}
+.piede a:hover {
+  color: var(--nebbia);
+}
+.piede :focus-visible {
+  outline-color: var(--calce);
+}
+.piede-griglia {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px;
+}
+.piede .wordmark-piede {
+  font: 400 1.375rem var(--serif);
+  margin-bottom: 8px;
+}
+.piede address {
+  font-style: normal;
+}
+.piede ul {
+  list-style: none;
+  margin: 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--calce-velo);
+}
+.piede li {
+  padding: 4px 0;
+}
+.piede p {
+  margin-bottom: 8px;
+}
+.piede .minuta {
+  font-size: 0.875rem;
+}
+@media (max-width: 767px) {
+  .piede-griglia {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ---------- Barra mobile fissa ---------- */
+
+.barra-mobile {
+  display: none;
+}
+@media (max-width: 767px) {
+  .barra-mobile {
+    display: flex;
+    gap: 8px;
+    position: fixed;
+    inset: auto 0 0 0;
+    background: var(--calce);
+    border-top: 1px solid var(--ottone);
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+    z-index: 5;
+  }
+  .barra-mobile .bottone {
+    flex: 1;
+    min-height: 48px;
+  }
+  /* La barra non deve mai coprire la fine della pagina */
+  body {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ---------- Movimento: un solo effetto, con doppio guardiano.
+   Lo stato nascosto esiste solo se il JS è attivo (html.js)
+   E l'utente non ha chiesto motion ridotto. ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-anima] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 200ms ease-out, transform 200ms ease-out;
+  }
+  html.js [data-anima].vista {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Mobile: tipografia e spazi ---------- */
+
+@media (max-width: 767px) {
+  :root {
+    --spazio-sezione: 64px;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 2.25rem;
+    letter-spacing: -0.01em; /* il tracking stretto vale sopra i 40px */
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.375rem;
+  }
+  .hero .sottotitolo {
+    font-size: 1.0625rem;
+  }
+}

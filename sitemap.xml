@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- VERIFICARE CON IL CLIENTE: sostituire il dominio segnaposto -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://DOMINIO-DA-CONFERMARE.example/</loc>
+  </url>
+  <url>
+    <loc>https://DOMINIO-DA-CONFERMARE.example/servizi.html</loc>
+  </url>
+  <url>
+    <loc>https://DOMINIO-DA-CONFERMARE.example/chi-siamo.html</loc>
+  </url>
+  <url>
+    <loc>https://DOMINIO-DA-CONFERMARE.example/contatti.html</loc>
+  </url>
+  <url>
+    <loc>https://DOMINIO-DA-CONFERMARE.example/privacy.html</loc>
+  </url>
+</urlset>
