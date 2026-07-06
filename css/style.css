@@ -243,9 +243,9 @@ a:hover {
   background: var(--paper-2);
 }
 
-/* prima sezione dopo l'hero: mezzo respiro */
+/* prima sezione dopo l'hero: un filo di respiro, senza gap accidentale */
 .senza-sopra {
-  padding-top: clamp(2rem, 4vw, 4rem);
+  padding-top: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 /* ---------- Bottoni ---------- */
@@ -256,8 +256,8 @@ a:hover {
   justify-content: center;
   gap: 0.5em;
   min-height: 48px;
-  padding: 0 1.5rem;
-  font: 600 1rem var(--sans);
+  padding: 1rem 1.75rem;
+  font: 600 1.0625rem var(--sans);
   text-decoration: none;
   border: 1px solid transparent;
   border-radius: var(--r-sm);
@@ -288,13 +288,20 @@ a:hover {
   border-color: var(--ink);
   background: var(--surface);
 }
-/* link-freccia (ghost testuale) */
+/* link-freccia (ghost testuale): area tap ≥44px, sottolineatura chiara in hover */
 .link-freccia {
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
+  min-height: 44px;
   font-weight: 600;
+  font-size: 1.0625rem;
   text-decoration: none;
+}
+.link-freccia:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 .link-freccia::after {
   content: "\2192";
@@ -302,6 +309,12 @@ a:hover {
 }
 .link-freccia:hover::after {
   transform: translateX(4px);
+}
+/* link-azione: link testuale semplice ma con area tap piena (es. OpenStreetMap) */
+.link-azione {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 /* ---------- Testata sticky ---------- */
@@ -330,9 +343,30 @@ a:hover {
   padding-block: 0.75rem;
 }
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
   text-decoration: none;
   color: var(--ink);
   line-height: 1.15;
+}
+/* Segno segnaposto del logo: pronto a ricevere il file reale (id="logo-mark").
+   Colori dai token, così resta nel sistema anche il segnaposto. */
+.logo-mark {
+  flex: none;
+  display: block;
+}
+.logo-tile {
+  fill: var(--forest);
+}
+.logo-arco {
+  fill: var(--on-forest);
+}
+.logo-punto {
+  fill: var(--terracotta);
+}
+.wordmark-testo {
+  display: block;
 }
 .wordmark .sopra {
   display: block;
@@ -396,8 +430,7 @@ a:hover {
   transform: scaleX(1);
 }
 .testata .bottone-primario {
-  min-height: 44px;
-  padding: 0 1.1rem;
+  padding: 0 1.25rem;
 }
 
 @media (max-width: 819px) {
@@ -434,6 +467,28 @@ a:hover {
   /* il "Chiama" dell'header su mobile è nella barra fissa */
   .testata .bottone-primario {
     display: none;
+  }
+  .logo-mark {
+    width: 34px;
+    height: 34px;
+  }
+  .wordmark {
+    gap: 0.55rem;
+  }
+}
+@media (max-width: 480px) {
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+  }
+  .wordmark {
+    gap: 0.5rem;
+  }
+  .wordmark .nome {
+    font-size: 1.15rem;
+  }
+  .wordmark .sopra {
+    font-size: 0.5625rem;
   }
 }
 
@@ -539,8 +594,16 @@ a:hover {
   gap: 0.7rem;
   text-align: center;
   padding: 1.5rem;
-  background: linear-gradient(155deg, var(--paper-2), #e3dccb 70%, #dbd3c0);
+  /* luce interna tenue con sorgente in alto a sinistra, sopra le due tinte */
+  background:
+    radial-gradient(
+      120% 90% at 20% 14%,
+      rgba(255, 255, 255, 0.55),
+      rgba(255, 255, 255, 0) 52%
+    ),
+    linear-gradient(155deg, var(--paper-2), #e3dccb 70%, #dbd3c0);
   border: 1px solid var(--ink-12);
+  box-shadow: var(--shadow-md);
   isolation: isolate;
 }
 /* grana sottile a righe, quasi invisibile */
@@ -557,18 +620,15 @@ a:hover {
   );
   z-index: 0;
 }
-/* silhouette decorativa centrale (segnaposto), tratto ink tenue */
+/* ring interno 1px: un passe-partout che segue la forma del frame (arco/rett/cerchio) */
 .frame::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(
-      circle at 50% 42%,
-      rgba(27, 42, 37, 0.06),
-      transparent 42%
-    );
-  z-index: 0;
+  inset: 11px;
+  border: 1px solid var(--ink-30);
+  border-radius: inherit;
+  z-index: 1;
+  pointer-events: none;
 }
 .frame--arco {
   border-radius: var(--arch);
@@ -621,8 +681,13 @@ a:hover {
 
 .hero {
   position: relative;
-  padding-block: clamp(2.5rem, 6vw, 5.5rem) clamp(3rem, 7vw, 6rem);
+  /* padding-block superiore dimezzato: niente spazio morto sotto la testata */
+  padding-block: clamp(1.25rem, 3vw, 2.75rem) clamp(2.5rem, 6vw, 4.5rem);
   overflow: clip;
+}
+/* hero delle pagine interne (solo titolo): fondo compatto, il contenuto segue subito */
+.hero--compatto {
+  padding-bottom: clamp(1rem, 2.5vw, 2rem);
 }
 .hero-griglia {
   display: grid;
@@ -826,11 +891,13 @@ a:hover {
   box-shadow: var(--shadow-md);
   border-color: var(--ink-30);
 }
-.card-num {
-  font: 340 1.5rem var(--display);
-  font-variation-settings: "opsz" 40;
-  color: var(--terracotta);
-  letter-spacing: 0.02em;
+/* icona a linea del servizio, in alto a sinistra (stroke 1.5, ~28px) */
+.card-icona {
+  display: inline-flex;
+  color: var(--ink);
+}
+.card-icona svg {
+  display: block;
 }
 .card-servizio h3 {
   margin: 0;
@@ -869,6 +936,11 @@ a:hover {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
+}
+/* le due colonne partono dalla stessa linea in alto (contatti, chi siamo):
+   il frame sale e il suo bordo superiore allinea con l'inizio del testo */
+.striscia-alto {
+  align-items: flex-start;
 }
 .striscia-inversa .striscia-media {
   order: -1;
@@ -1333,6 +1405,15 @@ html.js .mappa .bottone {
   /* badge in rotazione lenta */
   html.js .badge-1997 .anello {
     animation: gira 26s linear infinite;
+  }
+  /* frame foto: sollevamento leggerissimo al passaggio del mouse */
+  html.js .frame {
+    transition: transform var(--dur-2) var(--ease),
+      box-shadow var(--dur-2) var(--ease);
+  }
+  html.js .frame:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 44px -12px rgba(27, 42, 37, 0.2);
   }
 }
 

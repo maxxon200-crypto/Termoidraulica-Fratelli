@@ -18,9 +18,17 @@
 
   <header class="testata">
     <div class="contenitore testata-interna">
-      <a class="wordmark" href="index.html">
-        <span class="sopra">Termoidraulica</span>
-        <span class="nome">Fratelli Bollente</span>
+      <a class="wordmark" href="index.html" aria-label="Termoidraulica Fratelli Bollente, vai alla home">
+        <svg id="logo-mark" class="logo-mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+          <!-- Segno segnaposto del logo: sostituire con il file reale mantenendo id="logo-mark" -->
+          <rect class="logo-tile" x="2" y="2" width="36" height="36" rx="10"/>
+          <path class="logo-arco" d="M13 28V19a7 7 0 0 1 14 0v9Z"/>
+          <circle class="logo-punto" cx="20" cy="22" r="2.2"/>
+        </svg>
+        <span class="wordmark-testo">
+          <span class="sopra">Termoidraulica</span>
+          <span class="nome">Fratelli Bollente</span>
+        </span>
       </a>
       <button class="menu-bottone" aria-expanded="false" aria-controls="nav-principale">Menu</button>
       <div class="testata-nav">
@@ -39,7 +47,7 @@
 
   <main id="contenuto">
 
-    <section class="hero" aria-labelledby="titolo-pagina">
+    <section class="hero hero--compatto" aria-labelledby="titolo-pagina">
       <div class="contenitore">
         <p class="eyebrow">Pagina di servizio</p>
         <h1 id="titolo-pagina">Informativa privacy</h1>

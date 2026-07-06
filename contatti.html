@@ -63,9 +63,17 @@
 
   <header class="testata">
     <div class="contenitore testata-interna">
-      <a class="wordmark" href="index.html">
-        <span class="sopra">Termoidraulica</span>
-        <span class="nome">Fratelli Bollente</span>
+      <a class="wordmark" href="index.html" aria-label="Termoidraulica Fratelli Bollente, vai alla home">
+        <svg id="logo-mark" class="logo-mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+          <!-- Segno segnaposto del logo: sostituire con il file reale mantenendo id="logo-mark" -->
+          <rect class="logo-tile" x="2" y="2" width="36" height="36" rx="10"/>
+          <path class="logo-arco" d="M13 28V19a7 7 0 0 1 14 0v9Z"/>
+          <circle class="logo-punto" cx="20" cy="22" r="2.2"/>
+        </svg>
+        <span class="wordmark-testo">
+          <span class="sopra">Termoidraulica</span>
+          <span class="nome">Fratelli Bollente</span>
+        </span>
       </a>
       <button class="menu-bottone" aria-expanded="false" aria-controls="nav-principale">Menu</button>
       <div class="testata-nav">
@@ -84,7 +92,7 @@
 
   <main id="contenuto">
 
-    <section class="hero" aria-labelledby="titolo-pagina">
+    <section class="hero hero--compatto" aria-labelledby="titolo-pagina">
       <div class="contenitore">
         <p class="eyebrow">Contatti e orari</p>
         <h1 id="titolo-pagina">Dove siamo, quando <span class="disegnata">ci siamo<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" vector-effect="non-scaling-stroke" d="M4 8 C 42 3 74 3 104 6 S 168 9 196 5"/></svg></span></h1>
@@ -92,7 +100,7 @@
     </section>
 
     <section class="senza-sopra" aria-label="Indirizzo, telefoni e orari">
-      <div class="contenitore striscia">
+      <div class="contenitore striscia striscia-alto">
         <div>
           <address class="recapiti">
             <strong>Via per Crescenzago 177</strong><br>
@@ -113,7 +121,7 @@
           <div class="mappa" data-mappa data-lat="45.519" data-lon="9.248">
             <p><strong>Via per Crescenzago 177</strong><br>20099 Sesto San Giovanni (MI)</p>
             <button class="bottone bottone-ghost" data-mappa-apri>Apri la mappa</button>
-            <a href="https://www.openstreetmap.org/?mlat=45.519&amp;mlon=9.248#map=17/45.519/9.248" target="_blank" rel="noopener">Apri in OpenStreetMap</a>
+            <a class="link-azione" href="https://www.openstreetmap.org/?mlat=45.519&amp;mlon=9.248#map=17/45.519/9.248" target="_blank" rel="noopener">Apri in OpenStreetMap</a>
           </div>
         </div>
       </div>

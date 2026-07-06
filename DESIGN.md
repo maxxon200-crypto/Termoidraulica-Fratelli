@@ -57,7 +57,7 @@ Due accenti in tutto: terracotta e ocra. Nessun verde "aperto", nessun rosso
 | bianco su terracotta | 4.53:1 | AA | **i bottoni terracotta portano testo bianco puro, non crema** |
 | crema (on-forest) su terracotta | 3.70:1 | solo grande | il crema sul bottone solo per etichette ≥ 24px |
 | bianco su terracotta-600 | 5.93:1 | AA | hover bottone |
-| **terracotta su paper** | **4.01:1** | **solo grande (3:1)** | terracotta come testo solo ≥ 24px (numeri 01–06); i link no |
+| **terracotta su paper** | **4.01:1** | **solo grande (3:1)** | terracotta come testo solo ≥ 24px (numeri grandi di sezione); i link no |
 | terracotta-600 su paper | 5.26:1 | AA | **link e eyebrow di testo su chiaro** |
 | terracotta-600 su surface | 5.68:1 | AA | link su card |
 | **ochre su paper** | **2.15:1** | **FALLISCE anche grande** | ocra mai testo su chiaro, solo forme/tratti |
@@ -122,12 +122,31 @@ Fallback metrico `Georgia` per l'H1 contro il CLS.
 Scala spazi base 8: 4/8/12/16/24/32/48/64/96/128. Ombre sempre basse e morbide.
 Hairline `1px solid var(--ink-30)`.
 
+**Regole MUST (non negoziabili).**
+- **Bottoni**: `min-height: 48px`, padding `16px 28px` (`1rem 1.75rem`), testo
+  Inter 600 ≥ 16px (default 17px). Vale per primario, ghost e barra mobile. Il
+  "Chiama" in testata è l'unica variante compatta: padding-block 0 ma
+  `min-height: 48px` e area tap piena. Nessun bottone più piccolo di così.
+- **Link-azione** (link testuali con funzione: "Tutti i servizi", "Mappa e
+  orari", "Apri la mappa", "Apri in OpenStreetMap", "Chiama"): area tap
+  **≥ 44px** (`.link-freccia`/`.link-azione`, `min-height: 44px`),
+  sottolineatura chiara in hover.
+- **Padding-block verticale delle sezioni**: il bordo SUPERIORE delle sezioni
+  titolo/hero è **dimezzato** rispetto a `--section-pad` (hero top ≤ ~2.75rem su
+  desktop; `.hero--compatto` per le pagine interne; `.senza-sopra` top ≤ ~1.5rem).
+  Vietato lo spazio morto tra un titolo e il suo primo contenuto: il whitespace
+  è lusso solo se intenzionale, mai un buco accidentale. Le due colonne editoriali
+  (contatti, chi siamo) partono dalla stessa linea in alto (`.striscia-alto`).
+
 ### 1.5 Elementi firma (con misura)
 
-1. **Frame ad arco** (`--arch`) per i placeholder foto principali; si alternano
-   con rettangolo (`--r-md`) e cerchio (50%). Il placeholder è un elemento
-   grafico vero: fondo a due tinte, grana sottile, una chip-etichetta discreta
-   in alto — mai testo in corsivo "FOTO: ...".
+1. **Frame foto** (arco `--arch`, rettangolo `--r-md`, cerchio 50%): stesso
+   trattamento curato su TUTTE le varianti, mai un box grigio. Placeholder come
+   elemento grafico vero: due tinte + **luce interna** con sorgente in alto a
+   sinistra, **grana diagonale** sottile, **ring interno 1px** (`--ink-30`),
+   **ombra morbida** (`--shadow-md`), chip-etichetta con icona camera +
+   didascalia. Hover: sollevamento leggerissimo (solo con motion consentito).
+   Mai testo in corsivo "FOTO: ...".
 2. **Sottolineatura disegnata** (SVG, tratto terracotta o ocra) su UNA frase
    chiave per sezione; si "disegna" al reveal (stroke-dashoffset), disattivata
    con motion ridotto.
@@ -169,10 +188,16 @@ che nascondono contenuto da sole.
 ## 2. Componenti globali
 
 - **Header sticky**: `--paper` trasparente in cima, con leggero fondo + blur +
-  hairline quando si scrolla (`.scrollata`, aggiunta dal JS). Wordmark a
-  sinistra; a destra i 4 link (underline animato in hover, pagina corrente
-  sottolineata) + un bottone **"Chiama"** (tel:, terracotta) per la conversione.
-  Mobile: bottone "Menu" (`aria-expanded`/`aria-controls`), disclosure verticale.
+  hairline quando si scrolla (`.scrollata`, aggiunta dal JS). Altezza costante
+  (`min-height: 72px`), lockup allineato al centro. **Lockup logo** a sinistra:
+  slot segno (`id="logo-mark"`, ~40×40, segnaposto pronto a ricevere il file
+  reale) + wordmark (eyebrow grotesque uppercase "TERMOIDRAULICA" sopra +
+  "Fratelli Bollente" in Fraunces), tutto cliccabile verso la home. A destra i 4
+  link (underline animato in hover, pagina corrente sottolineata) + un bottone
+  **"Chiama"** (tel:, terracotta) per la conversione. Mobile: bottone "Menu"
+  (`aria-expanded`/`aria-controls`), disclosure verticale. Il badge circolare
+  "B / dal 1997" resta SOLO come sigillo decorativo (hero o footer), mai come
+  logo di navigazione.
 - **Barra mobile fissa** (<768px): `--paper`, hairline sopra, "Chiama"
   (terracotta pieno) + "WhatsApp" (outline, `hidden` finché non c'è il numero).
   `body { padding-bottom }` per non coprire il footer.
@@ -190,7 +215,9 @@ che nascondono contenuto da sole.
 Hero (display + lead + bottone terracotta + link ghost, frame ad arco con card
 "IL NEGOZIO" sovrapposta, cerchio di sfondo, badge "dal 1997") → strip trust
 (`Dal 1997 · 29 anni al banco · Via per Crescenzago 177`) → marquee servizi →
-griglia 6 card servizio (cliccabili, numero 01–06, hover-lift, freccia) →
+griglia 6 card servizio (cliccabili, **icona a linea** per servizio in alto a
+sinistra — goccia, fiamma, fiocco, rubinetto, etichetta, estintore — hover-lift,
+freccia) →
 feature "il banco" (2 colonne, frame) → fascia scura CTA → footer.
 
 ### 3.2 servizi.html
@@ -200,14 +227,17 @@ un frame per sezione (archi/rett/cerchio alternati), bullet a trattino ocra →
 fascia scura CTA. Copy invariato rispetto alla v1 (liste da confermare).
 
 ### 3.3 chi-siamo.html — testo accorciato (vedi §7 del brief)
-Layout editoriale: eyebrow "LA NOSTRA STORIA", storia accorciata con 3 parole
+Layout editoriale compatto (hero `.hero--compatto`, colonna testo e frame che
+partono dalla stessa linea in alto): eyebrow "LA NOSTRA STORIA", storia
+accorciata con 3 parole
 chiave sottolineate a mano (`1997`, `un posto dove la gente entra`,
 `prima si ascolta, poi si vende`), pull-quote grande Fraunces italic, 1–2 frame
 ad arco a fianco, una stat "29 anni al banco" e un piccolo "1997 → oggi". Fascia
 scura CTA. Tutto il racconto resta dentro `<!-- VERIFICARE CON IL CLIENTE -->`.
 
 ### 3.4 contatti.html
-Hero → due colonne (recapiti + tabella orari | facciata mappa a peso zero) →
+Hero (compatto) → due colonne allineate in alto, stesso peso (recapiti + tabella
+orari | facciata mappa a peso zero), la pagina sta quasi in un viewport →
 form (etichette visibili, validazione nativa + messaggi it, bottone terracotta)
 → fascia scura CTA. Funzione invariata.
 
